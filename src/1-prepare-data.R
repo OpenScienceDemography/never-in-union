@@ -37,6 +37,17 @@ hdi <- read_excel(
     iso2 = country %>% countrycode(origin = "country.name", destination = "iso2c")
   )
 
+# Gapminder regional classification of countries
+# Use GPD and life_exp data from 30 years ago. 1992
+library(gapminder)
+
+gap <- gapminder_unfiltered %>% 
+  clean_names() %>% 
+  filter(year == 1992) %>% 
+  mutate(
+    iso3 = country %>% countrycode(origin = "country.name", destination = "iso3c")
+  )
+
 
 # join and clean
 never <- raw %>% 
@@ -52,7 +63,9 @@ never <- raw %>%
     prop_childless = (childless_n/ total_n),
     prop_neverinunion = (never_in_union_n / childless_n)
   ) %>% 
+  # join together
   left_join(hdi) %>% 
+  left_join(gap %>% select(-country), by = "iso3") %>% 
   # final filtering
   filter(bc_cate == "1960-1969", education == "All", total_n >= 1) %>% 
   # drop NaN for `prop_neverinunion`
@@ -62,3 +75,26 @@ never <- raw %>%
 
 
 save(never, file = "out/never.rda")
+
+
+# get world map outline (you might need to install the package)
+world_outline <- spData::world %>% 
+  st_as_sf() %>% 
+  rmapshaper::ms_simplify(.25)
+
+# let's use a fancy projection
+world_outline_robinson <- world_outline %>% 
+  #remove Antarctica
+  filter(!iso_a2 == "AQ") %>% 
+  st_transform(crs = "ESRI:54030") %>% 
+  mutate(
+    iso3 = name_long %>% countrycode(origin = "country.name", destination = "iso3c")
+  ) %>% 
+  select(-continent) %>% 
+  left_join(never, by = "iso3")
+
+country_borders <- world_outline %>% 
+  rmapshaper::ms_innerlines() %>% 
+  st_transform(crs = "ESRI:54030") 
+
+save(world_outline_robinson, country_borders, file = "out/geodata.rda")

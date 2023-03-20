@@ -11,6 +11,7 @@ source("src/0-prepare-session.R")
 
 # load the prepared dataset
 load("out/never.rda")
+load("out/geodata.rda")
 
 
 never %>% 
@@ -59,3 +60,95 @@ never %>%
   )
 
 ggsave("out/fig.pdf", width = 10, height = 10)
+
+# UPD  2023-03-20 ------------------------------
+# Remove flags, colorcode countries, add legend
+
+# first 4 colors are taken from gapminder.org
+# two more colors are produced with  "#ff5872" %>% clr_rotate(), 33 and 250 degrees
+gap_colors <- c("#ff5872","#7feb02", "#00d5e9", "#ffe700", "#E37900FF", "#3B90FFFF")
+
+never %>% 
+  ggplot(aes(prop_childless, country))+
+  geom_point(size = 4, color = "#004444")+ # this one is needed to set the coordinate space
+  geom_hline(yintercept = seq(1, 80, 2), size = 4, color = "#ccffff")+
+  geom_vline(xintercept = 0, size = 2, color = "#004444AA")+
+  geom_text(
+    data = . %>% filter(sex == "Women"),
+    x = .36, aes(label = country %>% tolower, color = continent), 
+    size = 3.5, hjust = 1, family = "ah", fontface = 2,
+    # color = "#004444AA"
+  )+
+  geom_point(size = 4, color = "#004444")+
+  # geom_flag(
+  #   # data = . %>% filter(sex == "Men"),
+  #   x = -.01, aes(country = iso2 %>% tolower), size = 4
+  # ) +
+  geom_moon(aes(ratio = prop_neverinunion, fill = sex, right = FALSE), size = 4, color = NA)+
+  facet_wrap(~ sex, nrow = 1)+
+  scale_fill_manual(values = c("#dfff00", "#00FFFF"))+
+  scale_color_manual(values = gap_colors)+
+  scale_x_continuous(position = "top")+
+  theme(
+    legend.position = "none",
+    panel.grid.major.y = element_blank(),
+    axis.text.y = element_blank(),
+    strip.text = element_blank(),
+    axis.text = element_text(face = 2), 
+    axis.title = element_text(face = 2)
+  )+
+  labs(
+    x = "Proportion of childlesness",
+    y = NULL
+  )+
+  geom_text(
+    data = tibble(sex = c("Men", "Women"), sign = c("♂", "♀")),
+    aes(label = sign),
+    x = .005, y = 77,
+    size = 20, hjust = 0, colour = c("#687807FF", "#017979FF"), 
+    family = "Roboto", fontface = 2
+  )
+
+main <- last_plot()
+
+# inset map of world regions
+world_outline_robinson %>% 
+  ggplot()+
+  geom_sf(aes(fill = continent), color = NA)+
+  geom_sf(data = country_borders, color = "#ccffff", size = .25)+
+  scale_fill_manual(values = gap_colors, na.value = "#00444499")+
+  theme_void()+
+  theme(legend.position = "none")
+
+inset <- last_plot()
+
+# legend
+tibble(
+  prop = c(.2, .4, .7),
+  x = c(.35, .5, .65),
+  y = .5,
+  perc = (prop * 100) %>% paste0("%")
+) %>%
+  ggplot(aes(x, y))+
+  geom_point(size = 4, color = "#004444")+ 
+  geom_moon(aes(ratio = prop, right = FALSE), size = 4, fill = "#dfff00", color = NA)+
+  geom_text(aes(label = perc), y = .4, family = "ah", fontface = 2, color = "#004444", size = 5.5)+
+  coord_cartesian(xlim = c(0, 1), ylim = c(0, 1), expand = FALSE)+
+  theme_void()+
+  annotate(
+    "text", x = .5, y = .6, label = "reading the moon",
+    family = "ah", fontface = 2, color = "#004444", size = 7
+  )
+
+legend <- last_plot()
+
+# assemble
+(
+  out <- ggdraw(main)+
+    draw_plot(inset, x = .12, width = .4, y = -.05, height = .3)+
+    draw_plot(legend, x = .1, width = .5, y = .15, height = .25)
+)
+
+ggsave("out/fig.pdf", plot = out, width = 10, height = 10)
+   
+  
