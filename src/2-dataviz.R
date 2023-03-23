@@ -19,54 +19,68 @@ never %>%
   geom_point()
 
 
-never %>% 
-  ggplot(aes(prop_childless, country))+
-  geom_point(size = 4, color = "#004444")+ # this one is needed to set the coordinate space
-  geom_hline(yintercept = seq(1, 80, 2), size = 4, color = "#ccffff")+
-  geom_vline(xintercept = 0, size = 2, color = "#004444AA")+
-  geom_text(
-    data = . %>% filter(sex == "Women"),
-    x = .36, aes(label = country %>% tolower), 
-    size = 3.5, hjust = 1, family = "ah", fontface = 2,
-    color = "#004444AA"
-  )+
-  geom_point(size = 4, color = "#004444")+
-  geom_flag(
-    # data = . %>% filter(sex == "Men"),
-    x = -.01, aes(country = iso2 %>% tolower), size = 4
-  ) +
-  geom_moon(aes(ratio = prop_neverinunion, fill = sex, right = FALSE), size = 4, color = NA)+
-  facet_wrap(~ sex, nrow = 1)+
-  scale_fill_manual(values = c("#dfff00", "#00FFFF"))+
-  scale_x_continuous(position = "top")+
-  theme(
-    legend.position = "none",
-    panel.grid.major.y = element_blank(),
-    axis.text.y = element_blank(),
-    strip.text = element_blank(),
-    axis.text = element_text(face = 2), 
-    axis.title = element_text(face = 2)
-  )+
-  labs(
-    x = "Proportion of childlesness",
-    y = NULL
-  )+
-  geom_text(
-    data = tibble(sex = c("Men", "Women"), sign = c("♂", "♀")),
-    aes(label = sign),
-    x = .005, y = 77,
-    size = 20, hjust = 0, colour = c("#687807FF", "#017979FF"), 
-    family = "Roboto", fontface = 2
-  )
+# never %>% 
+#   ggplot(aes(prop_childless, country))+
+#   geom_point(size = 4, color = "#004444")+ # this one is needed to set the coordinate space
+#   geom_hline(yintercept = seq(1, 80, 2), size = 4, color = "#ccffff")+
+#   geom_vline(xintercept = 0, size = 2, color = "#004444AA")+
+#   geom_text(
+#     data = . %>% filter(sex == "Women"),
+#     x = .36, aes(label = country %>% tolower), 
+#     size = 3.5, hjust = 1, family = "ah", fontface = 2,
+#     color = "#004444AA"
+#   )+
+#   geom_point(size = 4, color = "#004444")+
+#   geom_flag(
+#     # data = . %>% filter(sex == "Men"),
+#     x = -.01, aes(country = iso2 %>% tolower), size = 4
+#   ) +
+#   geom_moon(aes(ratio = prop_neverinunion, fill = sex, right = FALSE), size = 4, color = NA)+
+#   facet_wrap(~ sex, nrow = 1)+
+#   scale_fill_manual(values = c("#dfff00", "#00FFFF"))+
+#   scale_x_continuous(position = "top")+
+#   theme(
+#     legend.position = "none",
+#     panel.grid.major.y = element_blank(),
+#     axis.text.y = element_blank(),
+#     strip.text = element_blank(),
+#     axis.text = element_text(face = 2), 
+#     axis.title = element_text(face = 2)
+#   )+
+#   labs(
+#     x = "Proportion of childlesness",
+#     y = NULL
+#   )+
+#   geom_text(
+#     data = tibble(sex = c("Men", "Women"), sign = c("♂", "♀")),
+#     aes(label = sign),
+#     x = .005, y = 77,
+#     size = 20, hjust = 0, colour = c("#687807FF", "#017979FF"), 
+#     family = "Roboto", fontface = 2
+#   )
 
-ggsave("out/fig.pdf", width = 10, height = 10)
+# ggsave("out/fig.pdf", width = 10, height = 10)
 
 # UPD  2023-03-20 ------------------------------
 # Remove flags, colorcode countries, add legend
 
 # first 4 colors are taken from gapminder.org
 # two more colors are produced with  "#ff5872" %>% clr_rotate(), 33 and 250 degrees
-gap_colors <- c("#ff5872","#7feb02", "#00d5e9", "#ffe700", "#E37900FF", "#3B90FFFF")
+gap_colors <- c("#ff5872","#7feb02", "#ffe700", "#00d5e9", "#E37900FF", "#3B90FFFF")
+
+# a separate dataset for sex comparisons
+other_sex <- never %>% 
+  transmute(
+    country, 
+    sex = sex %>% 
+      str_replace("Men", "f") %>% 
+      str_replace("Women", "Men") %>% 
+      str_replace("f", "Women"), 
+    prop_childless_other_rex = prop_childless
+  ) %>% 
+  left_join(
+    never %>% select(country, sex, prop_childless)
+  )
 
 never %>% 
   ggplot(aes(prop_childless, country))+
@@ -79,7 +93,26 @@ never %>%
     size = 3.5, hjust = 1, family = "ah", fontface = 2,
     # color = "#004444AA"
   )+
-  geom_point(size = 4, color = "#004444")+
+  # the segment for sex differences
+  geom_segment(
+    data = other_sex,
+    aes(x = prop_childless_other_rex, xend = prop_childless, yend = country),
+    size = .5, color = "#004444AA"
+  )+
+  geom_point(
+    data = other_sex,
+    aes(x = prop_childless_other_rex),
+    size = 1, color = "#004444AA", fill = "#4DB6AC", shape = 21
+  )+
+  # correct sex values
+  geom_point(
+    size = 3/4, color = "#004444"
+  )+
+  geom_point(
+    aes(alpha = prop_neverinunion == 0),
+    size = 4, color = "#004444"
+  )+
+  scale_alpha_manual(values = c(1, .5))+
   # geom_flag(
   #   # data = . %>% filter(sex == "Men"),
   #   x = -.01, aes(country = iso2 %>% tolower), size = 4
@@ -98,7 +131,7 @@ never %>%
     axis.title = element_text(face = 2)
   )+
   labs(
-    x = "Proportion of childlesness",
+    x = "proportion of childless population aged 35+",
     y = NULL
   )+
   geom_text(
@@ -136,8 +169,8 @@ tibble(
   coord_cartesian(xlim = c(0, 1), ylim = c(0, 1), expand = FALSE)+
   theme_void()+
   annotate(
-    "text", x = .5, y = .6, label = "reading the moon",
-    family = "ah", fontface = 2, color = "#004444", size = 7
+    "label", x = .5, y = .64, label = "among childless population\nproportion of those who have\nnever been in a union\nby age 35\n \n \n ", lineheight = .7, fill = NA,
+    family = "ah", fontface = 2, color = "#004444", size = 6
   )
 
 legend <- last_plot()
@@ -145,10 +178,10 @@ legend <- last_plot()
 # assemble
 (
   out <- ggdraw(main)+
-    draw_plot(inset, x = .12, width = .4, y = -.05, height = .3)+
-    draw_plot(legend, x = .1, width = .5, y = .15, height = .25)
+    draw_plot(inset, x = .15, width = .4, y = -.05, height = .3)+
+    draw_plot(legend, x = .1, width = .5, y = .18, height = .25)
 )
 
 ggsave("out/fig.pdf", plot = out, width = 10, height = 10)
-   
+      
   

@@ -45,7 +45,8 @@ gap <- gapminder_unfiltered %>%
   clean_names() %>% 
   filter(year == 1992) %>% 
   mutate(
-    iso3 = country %>% countrycode(origin = "country.name", destination = "iso3c")
+    iso3 = country %>% countrycode(origin = "country.name", destination = "iso3c"),
+    continent = continent %>% paste
   )
 
 
@@ -70,8 +71,29 @@ never <- raw %>%
   filter(bc_cate == "1960-1969", education == "All", total_n >= 1) %>% 
   # drop NaN for `prop_neverinunion`
   drop_na(prop_neverinunion)  %>% 
-  # arrange by HDI
-  mutate(country = country %>% as_factor %>% fct_reorder(hdi)) 
+  # UPD  2023-03-23 fix Kyrgyzstan
+  mutate(
+    continent = case_when(country == "Kyrgyzstan" ~ "FSU", TRUE ~ continent)
+  ) %>% 
+  # UPD  2023-03-23
+  # arrange by HDI of the continent first and then within the continents
+  group_by(continent) %>% 
+  mutate(cont_hdi = hdi %>% mean) %>% 
+  ungroup() %>% 
+  arrange(cont_hdi, hdi) %>% 
+  mutate(country = country %>% as_factor %>% fct_inorder())
+
+
+# countries without male data 
+no_male_cntr <- never %>% 
+  select(iso3, sex, prop_childless) %>% 
+  pivot_wider(names_from = sex, values_from = prop_childless) %>% 
+  filter(is.na(Men)) %>% 
+  pull(iso3)
+
+# filter out countries without male data
+
+never <- never %>% filter(! iso3 %in% no_male_cntr)
 
 
 save(never, file = "out/never.rda")
