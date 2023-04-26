@@ -85,11 +85,11 @@ other_sex <- never %>%
 never %>% 
   ggplot(aes(prop_childless, country))+
   geom_point(size = 4, color = "#004444")+ # this one is needed to set the coordinate space
-  geom_hline(yintercept = seq(1, 80, 2), size = 4, color = "#ccffff")+
+  geom_hline(yintercept = seq(1, 80, 2), size = 5, color = "#ccffff")+
   geom_vline(xintercept = 0, size = 2, color = "#004444AA")+
   geom_text(
     data = . %>% filter(sex == "Women"),
-    x = .36, aes(label = country %>% tolower, color = continent), 
+    x = .43, aes(label = country %>% tolower, color = continent), 
     size = 3.5, hjust = 1, family = "ah", fontface = 2,
     # color = "#004444AA"
   )+
@@ -121,8 +121,9 @@ never %>%
   facet_wrap(~ sex, nrow = 1)+
   scale_fill_manual(values = c("#dfff00", "#00FFFF"))+
   scale_color_manual(values = gap_colors)+
-  scale_x_continuous(position = "top")+
+  scale_x_continuous(position = "top", limits = c(0, .42))+
   theme(
+    plot.title = element_text(size = 24, face = 2,  hjust = .5, family = "ah"), 
     legend.position = "none",
     panel.grid.major.y = element_blank(),
     axis.text.y = element_blank(),
@@ -132,12 +133,14 @@ never %>%
   )+
   labs(
     x = "proportion of childless population aged 35+",
-    y = NULL
+    y = NULL,
+    title = "Not having kids is often driven by inability to form a union", 
+    caption = "\nData: GGS wave 1, most recent DHS, and 1992 HDI; Sample: Individuals aged 35+ born in 1960s"
   )+
   geom_text(
     data = tibble(sex = c("Men", "Women"), sign = c("♂", "♀")),
     aes(label = sign),
-    x = .005, y = 72,
+    x = .005, y = 62,
     size = 20, hjust = 0, colour = c("#687807FF", "#017979FF"), 
     family = "Roboto", fontface = 2
   )
@@ -179,7 +182,7 @@ legend <- last_plot()
 (
   out <- ggdraw(main)+
     draw_plot(inset, x = .15, width = .4, y = -.05, height = .3)+
-    draw_plot(legend, x = .1, width = .5, y = .18, height = .25)
+    draw_plot(legend, x = .1, width = .5, y = .33, height = .25)
 )
 
 ggsave("out/fig.pdf", plot = out, width = 10, height = 10)

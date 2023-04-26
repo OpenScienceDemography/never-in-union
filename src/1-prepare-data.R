@@ -75,13 +75,25 @@ never <- raw %>%
   mutate(
     continent = case_when(country == "Kyrgyzstan" ~ "FSU", TRUE ~ continent)
   ) %>% 
+  # UPD  2023-04-26
+  # filter out small 
+  mutate(
+    small_cases = case_when(childless_n < 10 ~ 0, TRUE ~ 1)
+  ) %>% 
+  group_by(country) %>% 
+  mutate(
+    small_cases_n = small_cases %>% sum
+  ) %>% 
+  ungroup() %>% 
+  filter(small_cases_n == 2) %>% 
   # UPD  2023-03-23
   # arrange by HDI of the continent first and then within the continents
   group_by(continent) %>% 
   mutate(cont_hdi = hdi %>% mean) %>% 
   ungroup() %>% 
   arrange(cont_hdi, hdi) %>% 
-  mutate(country = country %>% as_factor %>% fct_inorder())
+  mutate(country = country %>% as_factor %>% fct_inorder()) 
+
 
 
 # countries without male data 
