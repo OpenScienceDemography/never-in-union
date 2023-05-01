@@ -38,7 +38,7 @@ hdi <- read_excel(
   )
 
 # Gapminder regional classification of countries
-# Use GPD and life_exp data from 30 years ago. 1992
+# Use GDP and life_exp data from 30 years ago. 1992
 library(gapminder)
 
 gap <- gapminder_unfiltered %>% 
