@@ -186,5 +186,5 @@ legend <- last_plot()
 )
 
 ggsave("out/fig.pdf", plot = out, width = 10, height = 10)
-      
+ggsave("out/fig.png", plot = out, width = 10, height = 10)
   
