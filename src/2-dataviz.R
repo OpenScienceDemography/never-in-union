@@ -134,7 +134,7 @@ never %>%
   labs(
     x = "proportion of childless population aged 35+",
     y = NULL,
-    title = "Not having kids is often driven by inability to form a union", 
+    title = "Not having children is often driven by inability to form a union", 
     caption = "\nData: GGS wave 1, most recent DHS, and 1992 HDI; Sample: Individuals aged 35+ born in 1960s"
   )+
   geom_text(
