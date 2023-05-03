@@ -140,7 +140,7 @@ never %>%
   geom_text(
     data = tibble(sex = c("Men", "Women"), sign = c("♂", "♀")),
     aes(label = sign),
-    x = .005, y = 62,
+    x = .005, y = 61,
     size = 20, hjust = 0, colour = c("#687807FF", "#017979FF"), 
     family = "Roboto", fontface = 2
   )
