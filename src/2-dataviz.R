@@ -187,4 +187,16 @@ legend <- last_plot()
 
 ggsave("out/fig.pdf", plot = out, width = 10, height = 10)
 ggsave("out/fig.png", plot = out, width = 10, height = 10, type = "cairo")
+
+# no title export
+(
+  out_no_tit <- ggdraw(
+    main 
+    + theme(plot.title = element_blank())
+  )+
+    draw_plot(inset, x = .15, width = .4, y = -.05, height = .3)+
+    draw_plot(legend, x = .1, width = .5, y = .33, height = .25)
+)
+
+ggsave("out/fig-no-tit.pdf", plot = out_no_tit, width = 10, height = 10)
   
