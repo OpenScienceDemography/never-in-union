@@ -186,7 +186,6 @@ legend <- last_plot()
 )
 
 ggsave("out/fig.pdf", plot = out, width = 10, height = 10)
-ggsave("out/fig.png", plot = out, width = 10, height = 10, type = "cairo")
 
 # no title export
 (
@@ -199,4 +198,9 @@ ggsave("out/fig.png", plot = out, width = 10, height = 10, type = "cairo")
 )
 
 ggsave("out/fig-no-tit.pdf", plot = out_no_tit, width = 10, height = 10)
-  
+
+
+# convert to PNG from the saved PDF  --------------------------------------
+library(pdftools)
+pdf_convert("out/fig.pdf", filenames = "out/fig.png", dpi = 300)
+pdf_convert("out/fig-no-tit.pdf", filenames = "out/fig-no-tit.png", dpi = 300)
