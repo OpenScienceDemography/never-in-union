@@ -25,7 +25,9 @@ load("out/never.rda")
 
 never <- never %>% 
   mutate(country = case_when(country == "Democratic Republic of the Congo" ~ "D.R.Congo", 
-                             T~ country))
+                             T~ country),
+         prop_childless = prop_childless * 100,
+         prop_neverinunion = prop_neverinunion * 100)
 
 # % of childless
 level_country <- never %>% 
