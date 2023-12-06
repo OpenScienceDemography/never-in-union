@@ -32,7 +32,7 @@ dhs_sel <- dhs %>%
   select(id, country, sex, age, bc_cate, birthyear, education, everbirth, everunion, dataset, datasetname, weight = weigr)
 
 ## edu 2
-dhs_sel <- dhs %>% 
+d_dhs <- dhs %>% 
   select(-education) %>% 
   rename(id = caseid, country = country_name, birthyear = v010, age = v012, education = pc50, bc_cate = cohort) %>% 
   group_by(country) %>% 
@@ -54,4 +54,4 @@ dhs_sel <- dhs %>%
          dataset = paste0("DHS", country_survey),
          datasetname = "DHS") %>% 
   select(id, country, sex, age, bc_cate, birthyear, education, everbirth, everunion, dataset, datasetname, weight = weigr)
-
+saveRDS(d_dhs, file = "../../../Users/rymo/OneDrive - Syddansk Universitet/BigData/tempo/dhs_sel.rds")

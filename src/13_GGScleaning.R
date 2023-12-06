@@ -26,4 +26,4 @@ D_ggs_w1 <- ggs_w1 %>%
          dataset = "GGS1",
          datasetname = "GGS") %>% 
   select(id, country, sex, age, bc_cate, birthyear, education, everbirth, everunion, dataset, datasetname)
-
+saveRDS(D_ggs_w1, file = "../../../Users/rymo/OneDrive - Syddansk Universitet/BigData/tempo/D_ggs_w1.rds")

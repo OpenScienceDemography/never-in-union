@@ -1,17 +1,17 @@
-D_all <- D_ggs_w1 %>% 
-  bind_rows(dhs_sel)
+d_all <- d_hh %>% 
+  bind_rows(d_dhs) %>% 
+  bind_rows(ESS39)
 
-D_all_sel <- func_makedata(oridata = D_all, minage = 35)
-D_all_sel <- D_all_sel %>% 
+d_all_sel <- func_makedata(oridata = d_all, minage = 35)
+d_all_sel <- d_all_sel %>% 
   mutate(prop_childless = round((ChildlessN / TotalN) * 100, 1),
          prop_neverinunion = round((NeverInUnionN / ChildlessN) * 100, 1),
          education = factor(education, levels = c("All", "Low", "Medium", "High")))
+write.csv(d_all_sel, "out/d_all_minage35_edu2.csv")
 
-D_all_sel %>% 
+d_all_sel %>% 
   filter(education == "All") %>% View()
 
-
-write.csv(D_all_sel, "out/D_all_minage35_edu2.csv")
 
 ##
 try <- D_all %>% 
