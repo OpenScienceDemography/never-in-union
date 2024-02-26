@@ -20,7 +20,7 @@ ESS39 <- ESS3sel %>%
                              yrbrn %in% 1970:1979 ~ "1970-1979",
                              yrbrn %in% 1980:1989 ~ "1980-1989",
                              yrbrn %in% 1990:1999 ~ "1990-1999",
-                             yrbrn %in% 1910:1919 ~ "2000-2009"),
+                             yrbrn %in% 2010:2009 ~ "2000-2009"),
          country = countrycode(cntry, origin = "genc2c", destination = "country.name"),
          country = ifelse(country == "United Kingdom", "The UK", country),
          everbirth = ifelse(bthcld == 1, 1, 0),
