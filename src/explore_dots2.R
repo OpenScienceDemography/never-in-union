@@ -50,6 +50,8 @@ never <- d_all_sel %>%
          TotalN >= 50) %>% 
   ungroup()
 
+write.csv(never, "out/data_analysis.csv")
+
 # % of childless
 level_country <- never %>% 
   filter(sex == "Men",
@@ -183,3 +185,94 @@ temp %>%
         legend.title = element_blank(),
         panel.spacing = unit(2, "lines"))
 ggsave("out/changes_bc_continent.png", width = 7.5, height = 6, bg = "white")
+
+
+## Ewa's idea
+# cohort change within country
+temp <- never %>% 
+  filter(education == "All",
+         sex != "NA",
+         bc_cate %in% c("1950-1959", "1960-1969", "1970-1979", "1980-1989")) %>% 
+  select(country, sex, bc_cate, prop_childless, prop_neverinunion, continent) %>% 
+  mutate(bc_cate = paste0("bc", bc_cate)) %>% 
+  gather(key = key, value = props, c(prop_childless, prop_neverinunion)) %>% 
+  spread(key = bc_cate, value = props) %>% 
+  mutate(set_50s = 1,
+         ratio_6050 = `bc1960-1969` / `bc1950-1959`,
+         ratio_7050 = `bc1970-1979` / `bc1950-1959`,
+         ratio_8050 = `bc1980-1989` / `bc1950-1959`) %>% 
+  gather(key = bc, value = ratio, c(set_50s, ratio_6050, ratio_7050, ratio_8050)) %>% 
+  select(country, sex, continent, key, bc, ratio) %>% 
+  filter(ratio >= 0, !is.infinite(ratio))
+
+onlyf <- temp %>% 
+  group_by(country) %>% 
+  count(sex) %>% 
+  filter(n == 8) %>% 
+  filter(sex == "Women")
+
+all <- temp %>% 
+  group_by(country) %>% 
+  count(sex) %>% 
+  filter(n == 8) %>% 
+  ungroup() %>% 
+  count(country) %>% 
+  filter(n == 2)
+write.csv(all, "out/dataforall.csv")
+
+
+
+never_childless <- temp %>% 
+  right_join(all, by = "country") %>% 
+  filter(key == 'prop_childless') %>% 
+  rename(ratio_childless = ratio) %>% 
+  select(-key)
+
+fig_all <- temp %>% 
+  right_join(all, by = "country") %>% 
+  filter(key == 'prop_neverinunion') %>% 
+  rename(ratio_neverinunion = ratio) %>% 
+  select(-key) %>% 
+  left_join(never_childless, by = c("country", "sex", "continent", "bc"))
+write.csv(fig_all, "out/dataforall.csv")
+
+fig_all %>% 
+  ggplot(aes(x = ratio_childless, y = ratio_neverinunion, group = country, colour = continent)) +
+  facet_wrap(~ sex, scales = "free") +
+  geom_line() + 
+  scale_colour_manual(values = c(col7[1], col7[5])) +
+  labs(x = "Change in % of childless population among total population compared to 1950s cohort",
+       y = "Change in % of individuals who have never formed a union among childless population compared to 1950s cohort") +
+  theme_minimal() +
+  theme(legend.position = "top",
+        legend.title = element_blank(),
+        panel.spacing = unit(2, "lines"))
+ggsave("out/changes_bc_continent_set1.png", width = 7.5, height = 6, bg = "white")
+
+never_childless <- temp %>% 
+  right_join(onlyf, by = c("country", "sex")) %>% 
+  filter(key == 'prop_childless') %>% 
+  rename(ratio_childless = ratio) %>% 
+  select(-key)
+
+fig_women <- temp %>% 
+  right_join(onlyf, by = c("country", "sex")) %>% 
+  filter(key == 'prop_neverinunion') %>% 
+  rename(ratio_neverinunion = ratio) %>% 
+  select(-key) %>% 
+  left_join(never_childless, by = c("country", "continent", "bc"))
+write.csv(fig_women, "out/dataforwomen.csv")
+
+fig_women %>% 
+  ggplot(aes(x = ratio_childless, y = ratio_neverinunion, group = country, colour = continent)) +
+  geom_line() + 
+  scale_colour_manual(values = c(Mycol[1:4], col7[4])) +
+  labs(x = "Ratio of childless pop among total pop",
+       y = "Ratio of those who have never formed a union among childless pop") +
+  theme_minimal() +
+  theme(legend.position = "top",
+        legend.title = element_blank(),
+        legend.text = element_text(size = 12),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 14))
+ggsave("out/changes_bc_continent_onlywomen.png", width = 7.5, height = 6, bg = "white")
