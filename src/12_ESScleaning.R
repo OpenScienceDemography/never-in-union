@@ -32,39 +32,39 @@ ESS39 <- ESS3sel %>%
                               edulvla %in% c(4, 412, 413, 421, 422, 423) ~ 4,
                               edulvla %in% c(5, 510, 520, 610, 620, 710, 720, 800) ~ 5,
                               edulvla %in% c(55, 555) ~ 0),
-         edu_cate = case_when(edulvla2 %in% c(0, 1, 2) ~ "Low",
+         education = case_when(edulvla2 %in% c(0, 1, 2) ~ "Low",
                               edulvla2 %in% c(3, 4) ~ "Medium",
                               edulvla2 == 5 ~ "High"),
          # weight
          anweight = pspwght * pweight,
          datasetname = "ESS",
          id = paste(idno, idno, "-")) %>% 
-select(id, country, sex, age = agea, bc_cate, birthyear = yrbrn, education = edu_cate, 
+select(id, country, sex, age = agea, bc_cate, birthyear = yrbrn, education, 
        everbirth, everunion, dataset, datasetname, weight = anweight)
 saveRDS(ESS39, file = "../../../Users/rymo/OneDrive - Syddansk Universitet/BigData/tempo/ESS39.rds")
 
 ##
 ESS_total <- ESS39 %>%
   filter(agea >= 35) %>% 
-  group_by(country, sex, bc_cate, edu_cate) %>% 
+  group_by(country, sex, bc_cate, education) %>% 
   tally(name = "TotalN")
 
 ESS_childless <- ESS39 %>%
   filter(agea >= 35) %>% 
-  group_by(country, sex, bc_cate, edu_cate) %>% 
+  group_by(country, sex, bc_cate, education) %>% 
   count(bthcld, name = "ChildlessN") %>% 
   filter(bthcld == 2) %>% 
   select(-bthcld)
 
 ESS_union <- ESS39 %>%
   filter(agea >= 35, bthcld == 2) %>% 
-  group_by(country, sex, bc_cate, edu_cate) %>% 
+  group_by(country, sex, bc_cate, education) %>% 
   count(evlvptn, name = "NeverInUnionN") %>% 
   filter(evlvptn == 2) %>% 
   select(-evlvptn)
 
 ESS_total <- ESS_total %>% 
-  left_join(ESS_childless, by = c("country", "sex", "bc_cate", "edu_cate")) %>% 
-  left_join(ESS_union, by = c("country", "sex", "bc_cate", "edu_cate"))
+  left_join(ESS_childless, by = c("country", "sex", "bc_cate", "education")) %>% 
+  left_join(ESS_union, by = c("country", "sex", "bc_cate", "education"))
 saveRDS(ESS_total, file = "../../../Users/rymo/OneDrive - Syddansk Universitet/BigData/tempo/ESS_total.rds")
 

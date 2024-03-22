@@ -35,8 +35,17 @@ ESS9 <- read.spss("../../../Users/rymo/OneDrive - Syddansk Universitet/BigData/E
 #                     nonint.factors = T, convert.factors = T)
 
 # Harmonized Histories
-hh <- read.dta13("../../../Users/rymo/OneDrive - Syddansk Universitet/BigData/GGS_Harmonized/HARMONIZED-HISTORIES_ALL_GGSaccess.dta", 
-                     nonint.factors = T, convert.factors = T)
+#hh <- read.dta13("../../../Users/rymo/OneDrive - Syddansk Universitet/BigData/GGS_Harmonized/HARMONIZED#-HISTORIES_ALL_GGSaccess.dta", 
+#                     nonint.factors = T, convert.factors = T)
+
+hh0 <- read.dta13("../../../Users/rymo/OneDrive - Syddansk Universitet/BigData/GGS_Harmonized/HH/HARMONIZED-HISTORIES_ALL_GGSaccess.dta", 
+                  nonint.factors = T, convert.factors = T)
+
+hh1 <- read.dta13("../../../Users/rymo/OneDrive - Syddansk Universitet/BigData/GGS_Harmonized/HH1/HARMONIZED-HISTORIES_I.dta", 
+                  nonint.factors = T, convert.factors = T)
+
+hh2 <- read.dta13("../../../Users/rymo/OneDrive - Syddansk Universitet/BigData/GGS_Harmonized/HH2/HarmonizedHistoriesII_2023_07_10.dta", 
+                  nonint.factors = T, convert.factors = T)
 
 # DHS
 dhs <- read.dta13("../../../Users/rymo/Dropbox (Personal)/Proj_Partnership/Research_UCP/Analysis/data/DHS/ucp_red_edu.dta", 

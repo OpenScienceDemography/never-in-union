@@ -1,3 +1,26 @@
+hh0_sel <- hh0 %>% 
+  select(IMONTH_S, IBORN_M, BORN_Y, SEX, YEAR_S, COUNTRY, KID_1, KID_2, KID_3, KID_4, KID_5,
+         KID_6, KID_7, KID_8, KID_9, KID_10, KID_11, KID_12, KID_13, KID_14, KID_15, KID_16,
+         UNION_1, UNION_2, UNION_3, UNION_4, UNION_5, UNION_6, UNION_7, UNION_8, UNION_9,
+         RESPID, EDU_3, IEDU_Y)
+
+hh1_sel <- hh1 %>% 
+  select(IMONTH_S, IBORN_M, BORN_Y, SEX, YEAR_S, COUNTRY, KID_1, KID_2, KID_3, KID_4, KID_5,
+         KID_6, KID_7, KID_8, KID_9, KID_10, KID_11, KID_12, KID_13, KID_14, KID_15, KID_16,
+         UNION_1, UNION_2, UNION_3, UNION_4, UNION_5, UNION_6, UNION_7, UNION_8, UNION_9,
+         RESPID, EDU_3, IEDU_Y)
+
+hh2_sel <- hh2 %>% 
+  select(IMONTH_S, IBORN_M, BORN_Y, SEX, YEAR_S, COUNTRY, KID_1, KID_2, KID_3, KID_4, KID_5,
+         KID_6, KID_7, KID_8, KID_9, KID_10, KID_11, KID_12, KID_13, KID_14, KID_15, KID_16,
+         UNION_1, UNION_2, UNION_3, UNION_4, UNION_5, UNION_6, UNION_7, UNION_8, UNION_9,
+         RESPID, EDU_3, IEDU_Y)
+
+
+hh <- hh0_sel %>% 
+  bind_rows(hh1_sel) %>% 
+  bind_rows(hh2_sel)
+
 d_hh <- hh %>% 
   mutate_at(c("IMONTH_S", "IBORN_M"),
             funs(case_when(. == "January" ~ 1,
@@ -31,17 +54,21 @@ d_hh <- hh %>%
                              COUNTRY == "Belgium GGS wave1" ~ "Belgium",
                              COUNTRY == "Bulgaria GGS wave1" ~ "Bulgaria",
                              COUNTRY == "Belarus GGS wave 1" ~ "Belarus",
-                             COUNTRY == "Canada GSS 2006" ~ "Canada",
-                             COUNTRY == "Czech Republic GGS wave 1" ~ "Czechia",
-                             COUNTRY == "Estonia GGS wave1" ~ "Estonia",
+                             COUNTRY %in% c("Canada GSS 2006", "Canada GSS 2011") ~ "Canada",
+                             COUNTRY %in% c("Czech Republic GGS wave 1", 
+                                            "2032. Czech Republic GGSII wave1") ~ "Czechia",
+                             COUNTRY == "2081. Denmark GGSII wave1" ~ "Denmark",
+                             COUNTRY %in% c("Estonia GGS wave1", "2332. Estonia GGSII wave1") ~ "Estonia",
                              COUNTRY == "France GGS wave1" ~ "France",
                              COUNTRY == "Georgia GGS wave1" ~ "Georgia",
                              COUNTRY %in% c("Germany GGS wave1", "Germany Pairfam") ~ "Germany",
                              COUNTRY == "Hungary GGS wave1" ~ "Hungary",
-                             COUNTRY == "Italy GGS wave1" ~ "Italy",
+                             COUNTRY %in% c("Italy GGS wave1", "3802. Italy Fss 2016") ~ "Italy",
+                             COUNTRY == "Kazakhstan GGS 2018" ~ "Kazakhstan",
                              COUNTRY == "Lithuania GGS wave1" ~ "Lithuania",
+                             COUNTRY == "Moldova GGS wave1" ~ "Moldova",
                              COUNTRY %in% c("Netherlands FFS", "Netherlands OG 2013") ~ "Netherlands",
-                             COUNTRY == "Norway GGS wave1" ~ "Norway",
+                             COUNTRY %in% c("Norway GGS wave1", "5782. Norway GGSII wave1") ~ "Norway",
                              COUNTRY == "Poland GGS wave1" ~ "Poland",
                              COUNTRY == "Romania GGS wave1" ~ "Romania",
                              COUNTRY == "Russia GGS wave1" ~ "Russia",

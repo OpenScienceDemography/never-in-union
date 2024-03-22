@@ -1,129 +1,235 @@
 "","country","sex","continent","bc","ratio_neverinunion","n.x","ratio_childless","n.y"
-"1","Austria","Men","Europe & North America","set_50s",1,2,1,2
-"2","Austria","Women","Europe & North America","set_50s",1,2,1,2
-"3","Belarus","Men","FSU","set_50s",1,2,1,2
-"4","Belarus","Women","FSU","set_50s",1,2,1,2
-"5","Belgium","Men","Europe & North America","set_50s",1,2,1,2
-"6","Belgium","Women","Europe & North America","set_50s",1,2,1,2
-"7","Croatia","Men","Europe & North America","set_50s",1,2,1,2
-"8","Croatia","Women","Europe & North America","set_50s",1,2,1,2
-"9","Czechia","Men","Europe & North America","set_50s",1,2,1,2
-"10","Czechia","Women","Europe & North America","set_50s",1,2,1,2
-"11","Estonia","Men","Europe & North America","set_50s",1,2,1,2
-"12","Estonia","Women","Europe & North America","set_50s",1,2,1,2
-"13","Finland","Men","Europe & North America","set_50s",1,2,1,2
-"14","Finland","Women","Europe & North America","set_50s",1,2,1,2
-"15","France","Men","Europe & North America","set_50s",1,2,1,2
-"16","France","Women","Europe & North America","set_50s",1,2,1,2
-"17","Germany","Men","Europe & North America","set_50s",1,2,1,2
-"18","Germany","Women","Europe & North America","set_50s",1,2,1,2
-"19","Hungary","Men","Europe & North America","set_50s",1,2,1,2
-"20","Hungary","Women","Europe & North America","set_50s",1,2,1,2
-"21","Ireland","Men","Europe & North America","set_50s",1,2,1,2
-"22","Ireland","Women","Europe & North America","set_50s",1,2,1,2
-"23","Italy","Men","Europe & North America","set_50s",1,2,1,2
-"24","Italy","Women","Europe & North America","set_50s",1,2,1,2
-"25","Poland","Men","Europe & North America","set_50s",1,2,1,2
-"26","Poland","Women","Europe & North America","set_50s",1,2,1,2
-"27","Serbia","Men","Europe & North America","set_50s",1,2,1,2
-"28","Serbia","Women","Europe & North America","set_50s",1,2,1,2
-"29","Spain","Men","Europe & North America","set_50s",1,2,1,2
-"30","Spain","Women","Europe & North America","set_50s",1,2,1,2
-"31","The UK","Men","Europe & North America","set_50s",1,2,1,2
-"32","The UK","Women","Europe & North America","set_50s",1,2,1,2
-"33","Austria","Men","Europe & North America","ratio_6050",1.58510638297872,2,1.47701149425287,2
-"34","Austria","Women","Europe & North America","ratio_6050",0.753472222222222,2,1.11188811188811,2
-"35","Belarus","Men","FSU","ratio_6050",0.876,2,1.47777777777778,2
-"36","Belarus","Women","FSU","ratio_6050",1.14285714285714,2,1.20238095238095,2
-"37","Belgium","Men","Europe & North America","ratio_6050",1.11284046692607,2,1.02551020408163,2
-"38","Belgium","Women","Europe & North America","ratio_6050",1.09493670886076,2,0.83974358974359,2
-"39","Croatia","Men","Europe & North America","ratio_6050",1.08505747126437,2,1.9645390070922,2
-"40","Croatia","Women","Europe & North America","ratio_6050",1.42307692307692,2,1.29245283018868,2
-"41","Czechia","Men","Europe & North America","ratio_6050",1.01423487544484,2,1.06550218340611,2
-"42","Czechia","Women","Europe & North America","ratio_6050",1.27102803738318,2,1.11764705882353,2
-"43","Estonia","Men","Europe & North America","ratio_6050",1.18153846153846,2,1.43809523809524,2
-"44","Estonia","Women","Europe & North America","ratio_6050",1.3864406779661,2,1.22950819672131,2
-"45","Finland","Men","Europe & North America","ratio_6050",0.82967032967033,2,1.27647058823529,2
-"46","Finland","Women","Europe & North America","ratio_6050",1.17934782608696,2,1.01290322580645,2
-"47","France","Men","Europe & North America","ratio_6050",1.16504854368932,2,1.24705882352941,2
-"48","France","Women","Europe & North America","ratio_6050",0.931623931623932,2,1.18461538461538,2
-"49","Germany","Men","Europe & North America","ratio_6050",1.2875,2,1.31623931623932,2
-"50","Germany","Women","Europe & North America","ratio_6050",1.28395061728395,2,1.01324503311258,2
-"51","Hungary","Men","Europe & North America","ratio_6050",1.05726872246696,2,1.65354330708661,2
-"52","Hungary","Women","Europe & North America","ratio_6050",1.33088235294118,2,1.09876543209877,2
-"53","Ireland","Men","Europe & North America","ratio_6050",0.812849162011173,2,1.28679245283019,2
-"54","Ireland","Women","Europe & North America","ratio_6050",1.04873646209386,2,0.831632653061224,2
-"55","Italy","Men","Europe & North America","ratio_6050",1.01066666666667,2,1.7962962962963,2
-"56","Italy","Women","Europe & North America","ratio_6050",1.08823529411765,2,1.6280487804878,2
-"57","Poland","Men","Europe & North America","ratio_6050",1.13065326633166,2,1.04790419161677,2
-"58","Poland","Women","Europe & North America","ratio_6050",1.25646551724138,2,0.970873786407767,2
-"59","Serbia","Men","Europe & North America","ratio_6050",0.958592132505176,2,1.6969696969697,2
-"60","Serbia","Women","Europe & North America","ratio_6050",0.900900900900901,2,1.29761904761905,2
-"61","Spain","Men","Europe & North America","ratio_6050",0.790254237288135,2,1.42384105960265,2
-"62","Spain","Women","Europe & North America","ratio_6050",0.92018779342723,2,1.21186440677966,2
-"63","The UK","Men","Europe & North America","ratio_6050",0.955172413793103,2,1.26388888888889,2
-"64","The UK","Women","Europe & North America","ratio_6050",1.13333333333333,2,1.125,2
-"65","Austria","Men","Europe & North America","ratio_7050",1.4468085106383,2,2.04022988505747,2
-"66","Austria","Women","Europe & North America","ratio_7050",0.809027777777778,2,1.47552447552448,2
-"67","Belarus","Men","FSU","ratio_7050",0.956,2,1.82222222222222,2
-"68","Belarus","Women","FSU","ratio_7050",0.837251356238698,2,1.08333333333333,2
-"69","Belgium","Men","Europe & North America","ratio_7050",1.01167315175097,2,1.1734693877551,2
-"70","Belgium","Women","Europe & North America","ratio_7050",1.35443037974684,2,0.961538461538462,2
-"71","Croatia","Men","Europe & North America","ratio_7050",1.03908045977012,2,2.01418439716312,2
-"72","Croatia","Women","Europe & North America","ratio_7050",1.59090909090909,2,1.21698113207547,2
-"73","Czechia","Men","Europe & North America","ratio_7050",0.772241992882562,2,0.982532751091703,2
-"74","Czechia","Women","Europe & North America","ratio_7050",1.07165109034268,2,1.18627450980392,2
-"75","Estonia","Men","Europe & North America","ratio_7050",1.2,2,2.00952380952381,2
-"76","Estonia","Women","Europe & North America","ratio_7050",0.925423728813559,2,1.63934426229508,2
-"77","Finland","Men","Europe & North America","ratio_7050",0.722527472527473,2,1.48823529411765,2
-"78","Finland","Women","Europe & North America","ratio_7050",1.30434782608696,2,1.09032258064516,2
-"79","France","Men","Europe & North America","ratio_7050",0.938511326860841,2,1.41764705882353,2
-"80","France","Women","Europe & North America","ratio_7050",0.683760683760684,2,1.23076923076923,2
-"81","Germany","Men","Europe & North America","ratio_7050",1.215625,2,1.27777777777778,2
-"82","Germany","Women","Europe & North America","ratio_7050",1.08641975308642,2,1.09271523178808,2
-"83","Hungary","Men","Europe & North America","ratio_7050",0.977973568281938,2,2.54330708661417,2
-"84","Hungary","Women","Europe & North America","ratio_7050",1.47058823529412,2,2.80246913580247,2
-"85","Ireland","Men","Europe & North America","ratio_7050",0.508379888268156,2,1.10943396226415,2
-"86","Ireland","Women","Europe & North America","ratio_7050",0.339350180505415,2,0.908163265306122,2
-"87","Italy","Men","Europe & North America","ratio_7050",1.36533333333333,2,2.33333333333333,2
-"88","Italy","Women","Europe & North America","ratio_7050",1.55228758169935,2,1.64024390243902,2
-"89","Poland","Men","Europe & North America","ratio_7050",0.968174204355109,2,1.26347305389222,2
-"90","Poland","Women","Europe & North America","ratio_7050",1.07112068965517,2,1.11650485436893,2
-"91","Serbia","Men","Europe & North America","ratio_7050",1.0952380952381,2,1.8030303030303,2
-"92","Serbia","Women","Europe & North America","ratio_7050",2.09009009009009,2,2.02380952380952,2
-"93","Spain","Men","Europe & North America","ratio_7050",0.798728813559322,2,1.88741721854305,2
-"94","Spain","Women","Europe & North America","ratio_7050",0.751173708920188,2,1.94915254237288,2
-"95","The UK","Men","Europe & North America","ratio_7050",0.641379310344828,2,1.59722222222222,2
-"96","The UK","Women","Europe & North America","ratio_7050",0.466666666666667,2,1.22222222222222,2
-"97","Austria","Men","Europe & North America","ratio_8050",1.55851063829787,2,2.77011494252874,2
-"98","Austria","Women","Europe & North America","ratio_8050",0.868055555555556,2,1.57342657342657,2
-"99","Belarus","Men","FSU","ratio_8050",0.896,2,2.6,2
-"100","Belarus","Women","FSU","ratio_8050",0.685352622061483,2,1.27380952380952,2
-"101","Belgium","Men","Europe & North America","ratio_8050",1.4591439688716,2,1.54081632653061,2
-"102","Belgium","Women","Europe & North America","ratio_8050",2.37341772151899,2,0.801282051282051,2
-"103","Croatia","Men","Europe & North America","ratio_8050",1.05287356321839,2,3.04255319148936,2
-"104","Croatia","Women","Europe & North America","ratio_8050",1.90559440559441,2,1.30188679245283,2
-"105","Czechia","Men","Europe & North America","ratio_8050",0.720640569395018,2,2.08296943231441,2
-"106","Czechia","Women","Europe & North America","ratio_8050",0.990654205607477,2,2.13725490196078,2
-"107","Estonia","Men","Europe & North America","ratio_8050",0.723076923076923,2,2.83809523809524,2
-"108","Estonia","Women","Europe & North America","ratio_8050",1.01694915254237,2,2.55737704918033,2
-"109","Finland","Men","Europe & North America","ratio_8050",0.17032967032967,2,1.77647058823529,2
-"110","Finland","Women","Europe & North America","ratio_8050",1.35869565217391,2,1.21290322580645,2
-"111","France","Men","Europe & North America","ratio_8050",0.462783171521036,2,1.76470588235294,2
-"112","France","Women","Europe & North America","ratio_8050",0,2,1.3,2
-"113","Germany","Men","Europe & North America","ratio_8050",0.3125,2,2.03418803418803,2
-"114","Germany","Women","Europe & North America","ratio_8050",0.588477366255144,2,1.42384105960265,2
-"115","Hungary","Men","Europe & North America","ratio_8050",1.3215859030837,2,2.62204724409449,2
-"116","Hungary","Women","Europe & North America","ratio_8050",0.647058823529412,2,3.67901234567901,2
-"117","Ireland","Men","Europe & North America","ratio_8050",0.504189944134078,2,1.6377358490566,2
-"118","Ireland","Women","Europe & North America","ratio_8050",0.866425992779783,2,1.07142857142857,2
-"119","Italy","Men","Europe & North America","ratio_8050",1.392,2,3.41975308641975,2
-"120","Italy","Women","Europe & North America","ratio_8050",1.08823529411765,2,2.67682926829268,2
-"121","Poland","Men","Europe & North America","ratio_8050",1.02345058626466,2,2.03592814371257,2
-"122","Poland","Women","Europe & North America","ratio_8050",0.717672413793103,2,1.38834951456311,2
-"123","Serbia","Men","Europe & North America","ratio_8050",1.29399585921325,2,3.3030303030303,2
-"124","Serbia","Women","Europe & North America","ratio_8050",2.7027027027027,2,2.16666666666667,2
-"125","Spain","Men","Europe & North America","ratio_8050",0.752118644067797,2,2.70198675496689,2
-"126","Spain","Women","Europe & North America","ratio_8050",0.42018779342723,2,3.25423728813559,2
-"127","The UK","Men","Europe & North America","ratio_8050",0.637931034482759,2,2.23148148148148,2
-"128","The UK","Women","Europe & North America","ratio_8050",0.795238095238095,2,1.18055555555556,2
+"1","Albania","Men","Europe & North America","set_60s",1,2,1,2
+"2","Albania","Women","Europe & North America","set_60s",1,2,1,2
+"3","Angola","Men","Africa","set_60s",1,2,1,2
+"4","Angola","Women","Africa","set_60s",1,2,1,2
+"5","Armenia","Men","FSU","set_60s",1,2,1,2
+"6","Armenia","Women","FSU","set_60s",1,2,1,2
+"7","Austria","Men","Europe & North America","set_60s",1,2,1,2
+"8","Austria","Women","Europe & North America","set_60s",1,2,1,2
+"9","Belarus","Men","FSU","set_60s",1,2,1,2
+"10","Belarus","Women","FSU","set_60s",1,2,1,2
+"11","Belgium","Men","Europe & North America","set_60s",1,2,1,2
+"12","Belgium","Women","Europe & North America","set_60s",1,2,1,2
+"13","Benin","Men","Africa","set_60s",1,2,1,2
+"14","Benin","Women","Africa","set_60s",1,2,1,2
+"15","Burundi","Men","Africa","set_60s",1,2,1,2
+"16","Burundi","Women","Africa","set_60s",1,2,1,2
+"17","Cameroon","Men","Africa","set_60s",1,2,1,2
+"18","Cameroon","Women","Africa","set_60s",1,2,1,2
+"19","Chad","Men","Africa","set_60s",1,2,1,2
+"20","Chad","Women","Africa","set_60s",1,2,1,2
+"21","Colombia","Men","Latin America","set_60s",1,2,1,2
+"22","Colombia","Women","Latin America","set_60s",1,2,1,2
+"23","Croatia","Men","Europe & North America","set_60s",1,2,1,2
+"24","Croatia","Women","Europe & North America","set_60s",1,2,1,2
+"25","Czechia","Men","Europe & North America","set_60s",1,2,1,2
+"26","Czechia","Women","Europe & North America","set_60s",1,2,1,2
+"27","Estonia","Men","Europe & North America","set_60s",1,2,1,2
+"28","Estonia","Women","Europe & North America","set_60s",1,2,1,2
+"29","Ethiopia","Men","Africa","set_60s",1,2,1,2
+"30","Ethiopia","Women","Africa","set_60s",1,2,1,2
+"31","Finland","Men","Europe & North America","set_60s",1,2,1,2
+"32","Finland","Women","Europe & North America","set_60s",1,2,1,2
+"33","France","Men","Europe & North America","set_60s",1,2,1,2
+"34","France","Women","Europe & North America","set_60s",1,2,1,2
+"35","Germany","Men","Europe & North America","set_60s",1,2,1,2
+"36","Germany","Women","Europe & North America","set_60s",1,2,1,2
+"37","Guinea","Men","Africa","set_60s",1,2,1,2
+"38","Guinea","Women","Africa","set_60s",1,2,1,2
+"39","Haiti","Men","Latin America","set_60s",1,2,1,2
+"40","Haiti","Women","Latin America","set_60s",1,2,1,2
+"41","Hungary","Men","Europe & North America","set_60s",1,2,1,2
+"42","Hungary","Women","Europe & North America","set_60s",1,2,1,2
+"43","India","Men","Asia","set_60s",1,2,1,2
+"44","India","Women","Asia","set_60s",1,2,1,2
+"45","Ireland","Men","Europe & North America","set_60s",1,2,1,2
+"46","Ireland","Women","Europe & North America","set_60s",1,2,1,2
+"47","Italy","Men","Europe & North America","set_60s",1,2,1,2
+"48","Italy","Women","Europe & North America","set_60s",1,2,1,2
+"49","Kazakhstan","Men","FSU","set_60s",1,2,1,2
+"50","Kazakhstan","Women","FSU","set_60s",1,2,1,2
+"51","Maldives","Men","Asia","set_60s",1,2,1,2
+"52","Maldives","Women","Asia","set_60s",1,2,1,2
+"53","Moldova","Men","Europe & North America","set_60s",1,2,1,2
+"54","Moldova","Women","Europe & North America","set_60s",1,2,1,2
+"55","Myanmar","Men","Asia","set_60s",1,2,1,2
+"56","Myanmar","Women","Asia","set_60s",1,2,1,2
+"57","Nigeria","Men","Africa","set_60s",1,2,1,2
+"58","Nigeria","Women","Africa","set_60s",1,2,1,2
+"59","Poland","Men","Europe & North America","set_60s",1,2,1,2
+"60","Poland","Women","Europe & North America","set_60s",1,2,1,2
+"61","Senegal","Men","Africa","set_60s",1,2,1,2
+"62","Senegal","Women","Africa","set_60s",1,2,1,2
+"63","Serbia","Men","Europe & North America","set_60s",1,2,1,2
+"64","Serbia","Women","Europe & North America","set_60s",1,2,1,2
+"65","South Africa","Men","Africa","set_60s",1,2,1,2
+"66","South Africa","Women","Africa","set_60s",1,2,1,2
+"67","Spain","Men","Europe & North America","set_60s",1,2,1,2
+"68","Spain","Women","Europe & North America","set_60s",1,2,1,2
+"69","Tanzania","Men","Africa","set_60s",1,2,1,2
+"70","Tanzania","Women","Africa","set_60s",1,2,1,2
+"71","The UK","Men","Europe & North America","set_60s",1,2,1,2
+"72","The UK","Women","Europe & North America","set_60s",1,2,1,2
+"73","Timor-Leste","Men","Asia","set_60s",1,2,1,2
+"74","Timor-Leste","Women","Asia","set_60s",1,2,1,2
+"75","Uganda","Men","Africa","set_60s",1,2,1,2
+"76","Uganda","Women","Africa","set_60s",1,2,1,2
+"77","Zimbabwe","Men","Africa","set_60s",1,2,1,2
+"78","Zimbabwe","Women","Africa","set_60s",1,2,1,2
+"79","Albania","Men","Europe & North America","ratio_7060",0.758887171561051,2,8.25,2
+"80","Albania","Women","Europe & North America","ratio_7060",1.61685823754789,2,1.64864864864865,2
+"81","Angola","Men","Africa","ratio_7060",0.963963963963964,2,0.837837837837838,2
+"82","Angola","Women","Africa","ratio_7060",1.45205479452055,2,0.871794871794872,2
+"83","Armenia","Men","FSU","ratio_7060",0.926829268292683,2,1.29032258064516,2
+"84","Armenia","Women","FSU","ratio_7060",0.933333333333333,2,2.2,2
+"85","Austria","Men","Europe & North America","ratio_7060",0.912751677852349,2,1.38132295719844,2
+"86","Austria","Women","Europe & North America","ratio_7060",1.07373271889401,2,1.32704402515723,2
+"87","Belarus","Men","FSU","ratio_7060",1.09132420091324,2,1.23308270676692,2
+"88","Belarus","Women","FSU","ratio_7060",0.732594936708861,2,0.900990099009901,2
+"89","Belgium","Men","Europe & North America","ratio_7060",1.03692307692308,2,1.14427860696517,2
+"90","Belgium","Women","Europe & North America","ratio_7060",1.09716599190283,2,1.14503816793893,2
+"91","Benin","Men","Africa","ratio_7060",0.498834498834499,2,0.833333333333333,2
+"92","Benin","Women","Africa","ratio_7060",0.874125874125874,2,1.31578947368421,2
+"93","Burundi","Men","Africa","ratio_7060",0.906645569620253,2,1.37931034482759,2
+"94","Burundi","Women","Africa","ratio_7060",0.694285714285714,2,1.36363636363636,2
+"95","Cameroon","Men","Africa","ratio_7060",0.710144927536232,2,1.2,2
+"96","Cameroon","Women","Africa","ratio_7060",1.92792792792793,2,2.08,2
+"97","Chad","Men","Africa","ratio_7060",1.83116883116883,2,1.1,2
+"98","Chad","Women","Africa","ratio_7060",1.66666666666667,2,1.66666666666667,2
+"99","Colombia","Men","Latin America","ratio_7060",1.08659793814433,2,1.09615384615385,2
+"100","Colombia","Women","Latin America","ratio_7060",1.07692307692308,2,1.34782608695652,2
+"101","Croatia","Men","Europe & North America","ratio_7060",0.957627118644068,2,1.02527075812274,2
+"102","Croatia","Women","Europe & North America","ratio_7060",1.11793611793612,2,0.941605839416058,2
+"103","Czechia","Men","Europe & North America","ratio_7060",0.76140350877193,2,0.922131147540984,2
+"104","Czechia","Women","Europe & North America","ratio_7060",0.843137254901961,2,1.06140350877193,2
+"105","Estonia","Men","Europe & North America","ratio_7060",1.015625,2,1.39735099337748,2
+"106","Estonia","Women","Europe & North America","ratio_7060",0.667481662591687,2,1.33333333333333,2
+"107","Ethiopia","Men","Africa","ratio_7060",1.42776203966006,2,1.44117647058824,2
+"108","Ethiopia","Women","Africa","ratio_7060",1.37530864197531,2,2.15625,2
+"109","Finland","Men","Europe & North America","ratio_7060",0.870860927152318,2,1.16589861751152,2
+"110","Finland","Women","Europe & North America","ratio_7060",1.10599078341014,2,1.07643312101911,2
+"111","France","Men","Europe & North America","ratio_7060",0.805555555555556,2,1.13679245283019,2
+"112","France","Women","Europe & North America","ratio_7060",0.73394495412844,2,1.03896103896104,2
+"113","Germany","Men","Europe & North America","ratio_7060",0.944174757281553,2,0.970779220779221,2
+"114","Germany","Women","Europe & North America","ratio_7060",0.846153846153846,2,1.07843137254902,2
+"115","Guinea","Men","Africa","ratio_7060",0.481981981981982,2,0.823529411764706,2
+"116","Guinea","Women","Africa","ratio_7060",0.962637362637363,2,2.05,2
+"117","Haiti","Men","Latin America","ratio_7060",1.65799256505576,2,2.85,2
+"118","Haiti","Women","Latin America","ratio_7060",1.22222222222222,2,1.96969696969697,2
+"119","Hungary","Men","Europe & North America","ratio_7060",0.925,2,1.53809523809524,2
+"120","Hungary","Women","Europe & North America","ratio_7060",1.10497237569061,2,2.55056179775281,2
+"121","India","Men","Asia","ratio_7060",1.2076124567474,2,1.16666666666667,2
+"122","India","Women","Asia","ratio_7060",1.62162162162162,2,1.38461538461538,2
+"123","Ireland","Men","Europe & North America","ratio_7060",0.625429553264605,2,0.862170087976539,2
+"124","Ireland","Women","Europe & North America","ratio_7060",0.323580034423408,2,1.0920245398773,2
+"125","Italy","Men","Europe & North America","ratio_7060",1.3509234828496,2,1.29896907216495,2
+"126","Italy","Women","Europe & North America","ratio_7060",1.42642642642643,2,1.00749063670412,2
+"127","Kazakhstan","Men","FSU","ratio_7060",1.03535353535354,2,1.7280701754386,2
+"128","Kazakhstan","Women","FSU","ratio_7060",0.975443383356071,2,1.01948051948052,2
+"129","Maldives","Men","Asia","ratio_7060",1.45212765957447,2,1,2
+"130","Maldives","Women","Asia","ratio_7060",1.11411411411411,2,1.31081081081081,2
+"131","Moldova","Men","Europe & North America","ratio_7060",1.13588110403397,2,1.53913043478261,2
+"132","Moldova","Women","Europe & North America","ratio_7060",0.855392156862745,2,1.1,2
+"133","Myanmar","Men","Asia","ratio_7060",0.99252801992528,2,1.09433962264151,2
+"134","Myanmar","Women","Asia","ratio_7060",1.20247933884298,2,1.87837837837838,2
+"135","Nigeria","Men","Africa","ratio_7060",3.05405405405405,2,1.05882352941176,2
+"136","Nigeria","Women","Africa","ratio_7060",1.23913043478261,2,2.26315789473684,2
+"137","Poland","Men","Europe & North America","ratio_7060",0.856296296296296,2,1.20571428571429,2
+"138","Poland","Women","Europe & North America","ratio_7060",0.852487135506004,2,1.15,2
+"139","Senegal","Men","Africa","ratio_7060",1.01501501501502,2,2.04166666666667,2
+"140","Senegal","Women","Africa","ratio_7060",1.57840616966581,2,1.59574468085106,2
+"141","Serbia","Men","Europe & North America","ratio_7060",1.14254859611231,2,1.0625,2
+"142","Serbia","Women","Europe & North America","ratio_7060",2.32,2,1.55963302752294,2
+"143","South Africa","Men","Africa","ratio_7060",1.26024096385542,2,0.893939393939394,2
+"144","South Africa","Women","Africa","ratio_7060",1.09090909090909,2,0.965811965811966,2
+"145","Spain","Men","Europe & North America","ratio_7060",1.01072386058981,2,1.32558139534884,2
+"146","Spain","Women","Europe & North America","ratio_7060",0.816326530612245,2,1.60839160839161,2
+"147","Tanzania","Men","Africa","ratio_7060",1.98051948051948,2,1.70588235294118,2
+"148","Tanzania","Women","Africa","ratio_7060",1.384,2,1.02941176470588,2
+"149","The UK","Men","Europe & North America","ratio_7060",0.671480144404332,2,1.26373626373626,2
+"150","The UK","Women","Europe & North America","ratio_7060",0.411764705882353,2,1.08641975308642,2
+"151","Timor-Leste","Men","Asia","ratio_7060",0.923188405797101,2,1.02898550724638,2
+"152","Timor-Leste","Women","Asia","ratio_7060",1.27294685990338,2,1.33333333333333,2
+"153","Uganda","Men","Africa","ratio_7060",3.38,2,1.35714285714286,2
+"154","Uganda","Women","Africa","ratio_7060",1.17567567567568,2,1.33333333333333,2
+"155","Zimbabwe","Men","Africa","ratio_7060",0.827004219409283,2,0.9,2
+"156","Zimbabwe","Women","Africa","ratio_7060",1.1625,2,1.80645161290323,2
+"157","Albania","Men","Europe & North America","ratio_8060",1.12210200927357,2,11.375,2
+"158","Albania","Women","Europe & North America","ratio_8060",2.54022988505747,2,3.81081081081081,2
+"159","Angola","Men","Africa","ratio_8060",2.25225225225225,2,0.594594594594595,2
+"160","Angola","Women","Africa","ratio_8060",2.73972602739726,2,1.82051282051282,2
+"161","Armenia","Men","FSU","ratio_8060",1.24820659971306,2,1.69354838709677,2
+"162","Armenia","Women","FSU","ratio_8060",1.06666666666667,2,3.66,2
+"163","Austria","Men","Europe & North America","ratio_8060",0.983221476510067,2,1.87548638132296,2
+"164","Austria","Women","Europe & North America","ratio_8060",1.15207373271889,2,1.41509433962264,2
+"165","Belarus","Men","FSU","ratio_8060",1.02283105022831,2,1.7593984962406,2
+"166","Belarus","Women","FSU","ratio_8060",0.599683544303797,2,1.05940594059406,2
+"167","Belgium","Men","Europe & North America","ratio_8060",1.15384615384615,2,1.50248756218905,2
+"168","Belgium","Women","Europe & North America","ratio_8060",1.51821862348178,2,0.954198473282443,2
+"169","Benin","Men","Africa","ratio_8060",0.258741258741259,2,1.11111111111111,2
+"170","Benin","Women","Africa","ratio_8060",1.16550116550117,2,3,2
+"171","Burundi","Men","Africa","ratio_8060",1.17879746835443,2,1.89655172413793,2
+"172","Burundi","Women","Africa","ratio_8060",1.02,2,1.81818181818182,2
+"173","Cameroon","Men","Africa","ratio_8060",2.64734299516908,2,1.7,2
+"174","Cameroon","Women","Africa","ratio_8060",1.96696696696697,2,4,2
+"175","Chad","Men","Africa","ratio_8060",0,2,0.6,2
+"176","Chad","Women","Africa","ratio_8060",1.66666666666667,2,1.73333333333333,2
+"177","Colombia","Men","Latin America","ratio_8060",1.27835051546392,2,1.42307692307692,2
+"178","Colombia","Women","Latin America","ratio_8060",1.15991902834008,2,1.52173913043478,2
+"179","Croatia","Men","Europe & North America","ratio_8060",0.970338983050847,2,1.54873646209386,2
+"180","Croatia","Women","Europe & North America","ratio_8060",1.33906633906634,2,1.00729927007299,2
+"181","Czechia","Men","Europe & North America","ratio_8060",0.710526315789474,2,1.95491803278689,2
+"182","Czechia","Women","Europe & North America","ratio_8060",0.779411764705882,2,1.91228070175439,2
+"183","Estonia","Men","Europe & North America","ratio_8060",0.611979166666667,2,1.97350993377483,2
+"184","Estonia","Women","Europe & North America","ratio_8060",0.733496332518337,2,2.08,2
+"185","Ethiopia","Men","Africa","ratio_8060",1.49008498583569,2,1.79411764705882,2
+"186","Ethiopia","Women","Africa","ratio_8060",1.35308641975309,2,3.65625,2
+"187","Finland","Men","Europe & North America","ratio_8060",0.205298013245033,2,1.39170506912442,2
+"188","Finland","Women","Europe & North America","ratio_8060",1.15207373271889,2,1.19745222929936,2
+"189","France","Men","Europe & North America","ratio_8060",0.397222222222222,2,1.41509433962264,2
+"190","France","Women","Europe & North America","ratio_8060",0,2,1.0974025974026,2
+"191","Germany","Men","Europe & North America","ratio_8060",0.242718446601942,2,1.54545454545455,2
+"192","Germany","Women","Europe & North America","ratio_8060",0.458333333333333,2,1.40522875816993,2
+"193","Guinea","Men","Africa","ratio_8060",0.752252252252252,2,0.980392156862745,2
+"194","Guinea","Women","Africa","ratio_8060",1.17142857142857,2,6.15,2
+"195","Haiti","Men","Latin America","ratio_8060",2.07063197026022,2,4,2
+"196","Haiti","Women","Latin America","ratio_8060",1.21280602636535,2,3.87878787878788,2
+"197","Hungary","Men","Europe & North America","ratio_8060",1.25,2,1.58571428571429,2
+"198","Hungary","Women","Europe & North America","ratio_8060",0.486187845303867,2,3.34831460674157,2
+"199","India","Men","Asia","ratio_8060",1.37024221453287,2,1.69444444444444,2
+"200","India","Women","Asia","ratio_8060",1.87837837837838,2,1.83076923076923,2
+"201","Ireland","Men","Europe & North America","ratio_8060",0.620274914089347,2,1.27272727272727,2
+"202","Ireland","Women","Europe & North America","ratio_8060",0.826161790017212,2,1.28834355828221,2
+"203","Italy","Men","Europe & North America","ratio_8060",1.37730870712401,2,1.90378006872852,2
+"204","Italy","Women","Europe & North America","ratio_8060",1,2,1.64419475655431,2
+"205","Kazakhstan","Men","FSU","ratio_8060",1.0959595959596,2,1.67543859649123,2
+"206","Kazakhstan","Women","FSU","ratio_8060",0.995907230559345,2,0.863636363636364,2
+"207","Maldives","Men","Asia","ratio_8060",1.06382978723404,2,1.43181818181818,2
+"208","Maldives","Women","Asia","ratio_8060",0.942942942942943,2,1.97297297297297,2
+"209","Moldova","Men","Europe & North America","ratio_8060",1.06157112526539,2,2.24347826086957,2
+"210","Moldova","Women","Europe & North America","ratio_8060",0.892156862745098,2,1.14285714285714,2
+"211","Myanmar","Men","Asia","ratio_8060",0.881693648816936,2,1.50314465408805,2
+"212","Myanmar","Women","Asia","ratio_8060",1.12603305785124,2,3.39189189189189,2
+"213","Nigeria","Men","Africa","ratio_8060",4.35135135135135,2,1.32352941176471,2
+"214","Nigeria","Women","Africa","ratio_8060",1.5024154589372,2,4.89473684210526,2
+"215","Poland","Men","Europe & North America","ratio_8060",0.905185185185185,2,1.94285714285714,2
+"216","Poland","Women","Europe & North America","ratio_8060",0.571183533447684,2,1.43,2
+"217","Senegal","Men","Africa","ratio_8060",0.762762762762763,2,2.70833333333333,2
+"218","Senegal","Women","Africa","ratio_8060",1.24678663239075,2,4.53191489361702,2
+"219","Serbia","Men","Europe & North America","ratio_8060",1.34989200863931,2,1.94642857142857,2
+"220","Serbia","Women","Europe & North America","ratio_8060",3,2,1.6697247706422,2
+"221","South Africa","Men","Africa","ratio_8060",1.55421686746988,2,1.18181818181818,2
+"222","South Africa","Women","Africa","ratio_8060",1.10015408320493,2,1.93162393162393,2
+"223","Spain","Men","Europe & North America","ratio_8060",0.951742627345845,2,1.89767441860465,2
+"224","Spain","Women","Europe & North America","ratio_8060",0.456632653061224,2,2.68531468531468,2
+"225","Tanzania","Men","Africa","ratio_8060",2.16233766233766,2,1.88235294117647,2
+"226","Tanzania","Women","Africa","ratio_8060",0,2,0.352941176470588,2
+"227","The UK","Men","Europe & North America","ratio_8060",0.667870036101083,2,1.76556776556777,2
+"228","The UK","Women","Europe & North America","ratio_8060",0.701680672268908,2,1.04938271604938,2
+"229","Timor-Leste","Men","Asia","ratio_8060",1.06231884057971,2,1.56521739130435,2
+"230","Timor-Leste","Women","Asia","ratio_8060",1.91787439613527,2,2.48148148148148,2
+"231","Uganda","Men","Africa","ratio_8060",5.56,2,0.857142857142857,2
+"232","Uganda","Women","Africa","ratio_8060",1.68918918918919,2,2.16666666666667,2
+"233","Zimbabwe","Men","Africa","ratio_8060",1.50632911392405,2,0.8,2
+"234","Zimbabwe","Women","Africa","ratio_8060",2.303125,2,3.38709677419355,2
