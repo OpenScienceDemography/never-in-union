@@ -136,6 +136,10 @@ d_hh <- hh %>%
          everunion = ifelse(num_union > 0, 1, 0),
          datasetname = "HH",
          RESPID = as.character(RESPID)) %>% 
+  group_by(country, SEX, bc_cate) %>% 
+  mutate(median_eduy = median(IEDU_Y, na.rm = T),
+         edu2 = ifelse(IEDU_Y >= median_eduy, "High", "Low")) %>% 
+  ungroup() %>% 
   select(id = RESPID, country, sex = SEX, age, bc_cate, birthyear = BORN_Y, education = EDU_3, 
-         everbirth, everunion, dataset = COUNTRY, datasetname)
+         everbirth, everunion, dataset = COUNTRY, datasetname, edu2)
 saveRDS(d_hh, file = "../../../Users/rymo/OneDrive - Syddansk Universitet/BigData/tempo/d_hh.rds")

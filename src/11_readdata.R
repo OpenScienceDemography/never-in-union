@@ -16,7 +16,7 @@ ESS3 <- read.spss("../../../Users/rymo/OneDrive - Syddansk Universitet/BigData/E
 #                  to.data.frame = T, use.value.labels = F)
 #ESS8 <- read.spss("../../../../OneDrive - Syddansk Universitet/BigData/ESS/ESS8e02_2.sav", 
 #                  to.data.frame = T, use.value.labels = F)
-ESS9 <- read.spss("../../../Users/rymo/OneDrive - Syddansk Universitet/BigData/ESS/ESS9e03_1.sav", 
+ESS9 <- read.spss("../../../Users/rymo/OneDrive - Syddansk Universitet/BigData/ESS/ESS9e03_2.sav", 
                   to.data.frame = T, use.value.labels = F)
 #ESS10 <- read.spss("../../../../OneDrive - Syddansk Universitet/BigData/ESS/ESS10.sav", 
 #                  to.data.frame = T, use.value.labels = F)

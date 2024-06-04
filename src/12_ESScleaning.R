@@ -1,9 +1,9 @@
 ESS3sel <- ESS3 %>% 
-  select(idno, cntry, agea, pspwght, pweight, evlvptn, gndr, yrbrn, edulvla, bthcld) %>% 
+  select(idno, cntry, agea, pspwght, pweight, evlvptn, gndr, yrbrn, edulvla, bthcld, eduyrs) %>% 
   mutate(dataset = "ESS3")
 
 ESS9sel <- ESS9 %>% 
-  select(idno, cntry, agea, pspwght, pweight, evlvptn, gndr, yrbrn, edulvla = edulvlb, bthcld) %>% 
+  select(idno, cntry, agea, pspwght, pweight, evlvptn, gndr, yrbrn, edulvla = edulvlb, bthcld, eduyrs) %>% 
   mutate(dataset = "ESS9")
 
 ESS39 <- ESS3sel %>% 
@@ -33,13 +33,17 @@ ESS39 <- ESS3sel %>%
                               edulvla %in% c(5, 510, 520, 610, 620, 710, 720, 800) ~ 5,
                               edulvla %in% c(55, 555) ~ 0),
          education = case_when(edulvla2 %in% c(0, 1, 2) ~ "Low",
-                              edulvla2 %in% c(3, 4) ~ "Medium",
-                              edulvla2 == 5 ~ "High"),
+                               edulvla2 %in% c(3, 4) ~ "Medium",
+                               edulvla2 == 5 ~ "High"),
          # weight
          anweight = pspwght * pweight,
          datasetname = "ESS",
          id = paste(idno, idno, "-")) %>% 
-select(id, country, sex, age = agea, bc_cate, birthyear = yrbrn, education, 
+  group_by(country, sex, bc_cate) %>% 
+  mutate(mean_eduy = mean(eduyrs, na.rm = T),
+         edu2 = ifelse(eduyrs >= mean_eduy, "High", "Low")) %>% 
+  ungroup() %>% 
+select(id, country, sex, age = agea, bc_cate, birthyear = yrbrn, education, edu2,
        everbirth, everunion, dataset, datasetname, weight = anweight)
 saveRDS(ESS39, file = "../../../Users/rymo/OneDrive - Syddansk Universitet/BigData/tempo/ESS39.rds")
 

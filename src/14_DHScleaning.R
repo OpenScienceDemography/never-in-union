@@ -53,5 +53,9 @@ d_dhs <- dhs %>%
          education = factor(education, levels = c("Low", "High")),
          dataset = paste0("DHS", country_survey),
          datasetname = "DHS") %>% 
-  select(id, country, sex, age, bc_cate, birthyear, education, everbirth, everunion, dataset, datasetname, weight = weigr)
+  group_by(country, sex, bc_cate) %>% 
+  mutate(mean_eduy = mean(yearss, na.rm = T),
+         edu2 = ifelse(yearss >= mean_eduy, "High", "Low")) %>% 
+  ungroup() %>% 
+  select(id, country, sex, age, bc_cate, birthyear, education, everbirth, everunion, dataset, datasetname, weight = weigr, edu2)
 saveRDS(d_dhs, file = "../../../Users/rymo/OneDrive - Syddansk Universitet/BigData/tempo/dhs_sel.rds")
