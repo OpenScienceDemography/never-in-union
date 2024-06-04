@@ -52,7 +52,7 @@ never <- d_all_sel %>%
 
 write.csv(never, "out/data_analysis.csv")
 
-# % of childless
+# % of childless among total population
 level_country <- never %>% 
   filter(sex == "Men",
          education == "All",
