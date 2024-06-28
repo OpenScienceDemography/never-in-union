@@ -70,6 +70,7 @@ never <- d_all_sel %>%
          p_niu = n_niu / n_childless * 100) %>% 
   left_join(d_un, by = "country") %>% 
   filter(!is.na(gii))
+write.csv(never, "out/dataset_forEPC_alledu.csv")
   
 # % of childless
 level_country <- never %>% 
@@ -139,7 +140,7 @@ never %>%
 ggsave("out/gii_p-niu_genderdiff.png", width = 7.5, height = 5, bg = "white")
 
 # x: GII, y: ratio of % never-in-union by education
-d_all_sel %>% 
+never_edu <- d_all_sel %>% 
   filter(bc_cate %in% c("1960-1969", "1970-1979"),
          edu2 %in% c("Low", "High"),
          !is.na(sex)) %>% 
@@ -180,7 +181,10 @@ d_all_sel %>%
   select(country, sex, edu2, p_niu, continent, gii) %>% 
   spread(key = sex, value = p_niu) %>% 
   mutate(diff = Men / Women) %>% 
-  filter(Women > 0) %>% 
+  filter(Women > 0)
+write.csv(never_edu, "out/dataset_forEPC_byedu2.csv")
+
+never_edu %>% 
   ggplot(aes(x = gii, y = diff)) +
   facet_wrap(~ edu2) + 
   geom_point(aes(group = country, colour = continent)) +
