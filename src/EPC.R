@@ -71,6 +71,46 @@ never <- d_all_sel %>%
   left_join(d_un, by = "country") %>% 
   filter(!is.na(gii))
 write.csv(never, "out/dataset_forEPC_alledu.csv")
+
+never_edu2 <- d_all_sel %>% 
+  filter(bc_cate %in% c("1960-1969", "1970-1979"),
+         edu2 %in% c("Low", "High"),
+         !is.na(sex)) %>% 
+  mutate(TotalN = ifelse(is.na(TotalN), 0, TotalN),
+         ChildlessN = ifelse(is.na(ChildlessN), 0, ChildlessN),
+         NeverInUnionN = ifelse(is.na(NeverInUnionN), 0, NeverInUnionN)) %>% 
+  filter(TotalN >= 15) %>% # arbitrary
+  group_by(country, sex, edu2) %>% 
+  summarise(n_total = sum(TotalN),
+            n_childless = sum(ChildlessN),
+            n_niu = sum(NeverInUnionN)) %>% 
+  group_by(country) %>% 
+  mutate(n = n()) %>% 
+  ungroup() %>% 
+  filter(n == 4) %>% 
+  left_join(gap, by = "country")  %>% 
+  mutate(country = ifelse(country == "Democratic Republic of the Congo", "D.R.Congo", country),
+         continent = case_when(continent == "Europe" ~ "Europe & North America", 
+                               continent == "Americas" ~ "Latin America",
+                               T ~ continent),
+         continent = case_when(country == "Kyrgyzstan" ~ "FSU",
+                               country == "Congo" ~ "Africa",
+                               country == "Czechia" ~ "Europe & North America",
+                               country == "D.R.Congo" ~ "Africa",
+                               country == "Republic of Moldova" ~ "FSU",
+                               country == "Slovakia" ~ "FSU",
+                               country == "The UK" ~ "Europe & North America",
+                               country == "The US" ~ "Europe & North America",
+                               country == "Canada" ~ "Europe & North America",
+                               country == "Ivory Coast" ~ "Africa",
+                               T ~ continent)) %>% 
+  filter(n_total >= 30) %>%  # arbitrary
+  mutate(p_childless = n_childless / n_total * 100,
+         p_niu = n_niu / n_childless * 100,
+         edu2 = factor(edu2, levels = c("Low", "High"))) %>% 
+  left_join(d_un, by = "country") %>% 
+  filter(!is.na(gii))
+write.csv(never_edu2, "out/dataset_forEPC_byedu2.csv")
   
 # % of childless
 level_country <- never %>% 
@@ -85,7 +125,7 @@ country_num <- level_country %>%
 never %>% 
   mutate(country = factor(country, levels = level_country$country)) %>% 
   ggplot(aes(x = p_childless, y = country, group = sex, colour = sex)) +
-  geom_hline(yintercept = country_num$country, size = 2, color = "#eaeaea") +
+  geom_hline(yintercept = country_num$country, linewidth = 2, color = "#eaeaea") +
   geom_line(aes(group = country), colour = "grey") +
   geom_point(size = 2.5) +
   scale_colour_manual(values = c(col7[3], col7[5])) +
@@ -140,7 +180,7 @@ never %>%
 ggsave("out/gii_p-niu_genderdiff.png", width = 7.5, height = 5, bg = "white")
 
 # x: GII, y: ratio of % never-in-union by education
-never_edu <- d_all_sel %>% 
+ratio_edu <- d_all_sel %>% 
   filter(bc_cate %in% c("1960-1969", "1970-1979"),
          edu2 %in% c("Low", "High"),
          !is.na(sex)) %>% 
@@ -182,14 +222,15 @@ never_edu <- d_all_sel %>%
   spread(key = sex, value = p_niu) %>% 
   mutate(diff = Men / Women) %>% 
   filter(Women > 0)
-write.csv(never_edu, "out/dataset_forEPC_byedu2.csv")
+write.csv(ratio_edu, "out/ratio_forEPC_byedu2.csv")
 
-never_edu %>% 
+ratio_edu %>% 
   ggplot(aes(x = gii, y = diff)) +
   facet_wrap(~ edu2) + 
   geom_point(aes(group = country, colour = continent)) +
   geom_smooth(method = "gam") +
   scale_colour_manual(values = c(Mycol[1:4], col7[6])) +
+  ylim(0, 10) +
   labs(x = "Gender Inequality Index", y = "Ratio of Men / Women") +
   theme_minimal() +
   theme(legend.position = "bottom",

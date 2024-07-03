@@ -45,7 +45,7 @@ ESS39 <- ESS3sel %>%
   ungroup() %>% 
 select(id, country, sex, age = agea, bc_cate, birthyear = yrbrn, education, edu2,
        everbirth, everunion, dataset, datasetname, weight = anweight)
-saveRDS(ESS39, file = "../../../Users/rymo/OneDrive - Syddansk Universitet/BigData/tempo/ESS39.rds")
+saveRDS(ESS39, file = "../../../Library/CloudStorage/GoogleDrive-ryohei.mogi@upf.edu/My Drive/BigData/tempo/ESS39.rds")
 
 ##
 ESS_total <- ESS39 %>%
@@ -70,5 +70,5 @@ ESS_union <- ESS39 %>%
 ESS_total <- ESS_total %>% 
   left_join(ESS_childless, by = c("country", "sex", "bc_cate", "education")) %>% 
   left_join(ESS_union, by = c("country", "sex", "bc_cate", "education"))
-saveRDS(ESS_total, file = "../../../Users/rymo/OneDrive - Syddansk Universitet/BigData/tempo/ESS_total.rds")
+saveRDS(ESS_total, file = "../../../Library/CloudStorage/GoogleDrive-ryohei.mogi@upf.edu/My Drive/BigData/tempo/ESS_total.rds")
 

@@ -4,7 +4,7 @@
 #                  to.data.frame = T, use.value.labels = F)
 #ESS2 <- read.spss("../../../../OneDrive - Syddansk Universitet/BigData/ESS/ESS2e03_6.sav", 
 #                  to.data.frame = T, use.value.labels = F)
-ESS3 <- read.spss("../../../Users/rymo/OneDrive - Syddansk Universitet/BigData/ESS/ESS3e03_7.sav", 
+ESS3 <- read.spss("../../../Library/CloudStorage/GoogleDrive-ryohei.mogi@upf.edu/My Drive/BigData/ESS/ESS3e03_7.sav", 
                   to.data.frame = T, use.value.labels = F)
 #ESS4 <- read.spss("../../../../OneDrive - Syddansk Universitet/BigData/ESS/ESS4e04_5.sav", 
 #                  to.data.frame = T, use.value.labels = F)
@@ -16,7 +16,7 @@ ESS3 <- read.spss("../../../Users/rymo/OneDrive - Syddansk Universitet/BigData/E
 #                  to.data.frame = T, use.value.labels = F)
 #ESS8 <- read.spss("../../../../OneDrive - Syddansk Universitet/BigData/ESS/ESS8e02_2.sav", 
 #                  to.data.frame = T, use.value.labels = F)
-ESS9 <- read.spss("../../../Users/rymo/OneDrive - Syddansk Universitet/BigData/ESS/ESS9e03_2.sav", 
+ESS9 <- read.spss("../../../Library/CloudStorage/GoogleDrive-ryohei.mogi@upf.edu/My Drive/BigData/ESS/ESS9e03_2.sav", 
                   to.data.frame = T, use.value.labels = F)
 #ESS10 <- read.spss("../../../../OneDrive - Syddansk Universitet/BigData/ESS/ESS10.sav", 
 #                  to.data.frame = T, use.value.labels = F)
@@ -38,21 +38,21 @@ ESS9 <- read.spss("../../../Users/rymo/OneDrive - Syddansk Universitet/BigData/E
 #hh <- read.dta13("../../../Users/rymo/OneDrive - Syddansk Universitet/BigData/GGS_Harmonized/HARMONIZED#-HISTORIES_ALL_GGSaccess.dta", 
 #                     nonint.factors = T, convert.factors = T)
 
-hh0 <- read.dta13("../../../Users/rymo/OneDrive - Syddansk Universitet/BigData/GGS_Harmonized/HH/HARMONIZED-HISTORIES_ALL_GGSaccess.dta", 
+hh0 <- read.dta13("../../../Library/CloudStorage/GoogleDrive-ryohei.mogi@upf.edu/My Drive/BigData/GGS_Harmonized/HH/HARMONIZED-HISTORIES_ALL_GGSaccess.dta", 
                   nonint.factors = T, convert.factors = T)
 
-hh1 <- read.dta13("../../../Users/rymo/OneDrive - Syddansk Universitet/BigData/GGS_Harmonized/HH1/HARMONIZED-HISTORIES_I.dta", 
+hh1 <- read.dta13("../../../Library/CloudStorage/GoogleDrive-ryohei.mogi@upf.edu/My Drive/BigData/GGS_Harmonized/HH1/HARMONIZED-HISTORIES_I.dta", 
                   nonint.factors = T, convert.factors = T)
 
-hh2 <- read.dta13("../../../Users/rymo/OneDrive - Syddansk Universitet/BigData/GGS_Harmonized/HH2/HarmonizedHistoriesII_2023_07_10.dta", 
+hh2 <- read.dta13("../../../Library/CloudStorage/GoogleDrive-ryohei.mogi@upf.edu/My Drive/BigData/GGS_Harmonized/HH2/HarmonizedHistoriesII_2023_07_10.dta", 
                   nonint.factors = T, convert.factors = T)
 
 # DHS
-dhs <- read.dta13("../../../Users/rymo/Dropbox (Personal)/Proj_Partnership/Research_UCP/Analysis/data/DHS/ucp_red_edu.dta", 
+dhs <- read.dta13("../../../Dropbox/Proj_Partnership/Research_UCP/Analysis/data/DHS/ucp_red_edu.dta", 
                   nonint.factors = T, convert.factors = T)
 
 # Chile
-chile <- read.dta13("../../../Users/rymo/OneDrive - Syddansk Universitet/BigData/Chile/Chile_2017.dta", 
+chile <- read.dta13("../../../Library/CloudStorage/GoogleDrive-ryohei.mogi@upf.edu/My Drive/BigData/Chile/Chile_2017.dta", 
                     nonint.factors = T, convert.factors = T)
 
 

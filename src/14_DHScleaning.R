@@ -3,7 +3,7 @@ dhs_sel <- dhs %>%
   group_by(country) %>% 
   # select only the recent survey year
   filter(syear == max(syear)) %>% 
-  mutate(sex = ifelse(gender == 0, "Women", "Men"),
+  mutate(sex = ifelse(gender == 1, "Women", "Men"),
          bc_cate = case_when(birthyear %in% 1910:1914 ~ "1910-1914",
                              birthyear %in% 1915:1919 ~ "1915-1919",
                              birthyear %in% 1920:1924 ~ "1920-1924",
@@ -38,7 +38,7 @@ d_dhs <- dhs %>%
   group_by(country) %>% 
   # select only the recent survey year
   filter(syear == max(syear)) %>% 
-  mutate(sex = ifelse(gender == 0, "Women", "Men"),
+  mutate(sex = ifelse(gender == 1, "Women", "Men"),
          bc_cate = case_when(birthyear %in% 1910:1919 ~ "1910-1919",
                              birthyear %in% 1920:1929 ~ "1920-1929",
                              birthyear %in% 1930:1939 ~ "1930-1939",
@@ -58,4 +58,4 @@ d_dhs <- dhs %>%
          edu2 = ifelse(yearss >= mean_eduy, "High", "Low")) %>% 
   ungroup() %>% 
   select(id, country, sex, age, bc_cate, birthyear, education, everbirth, everunion, dataset, datasetname, weight = weigr, edu2)
-saveRDS(d_dhs, file = "../../../Users/rymo/OneDrive - Syddansk Universitet/BigData/tempo/dhs_sel.rds")
+saveRDS(d_dhs, file = "../../../Library/CloudStorage/GoogleDrive-ryohei.mogi@upf.edu/My Drive/BigData/tempo/dhs_sel.rds")

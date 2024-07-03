@@ -2,19 +2,19 @@ hh0_sel <- hh0 %>%
   select(IMONTH_S, IBORN_M, BORN_Y, SEX, YEAR_S, COUNTRY, KID_1, KID_2, KID_3, KID_4, KID_5,
          KID_6, KID_7, KID_8, KID_9, KID_10, KID_11, KID_12, KID_13, KID_14, KID_15, KID_16,
          UNION_1, UNION_2, UNION_3, UNION_4, UNION_5, UNION_6, UNION_7, UNION_8, UNION_9,
-         RESPID, EDU_3, IEDU_Y)
+         RESPID, EDU_3, IEDU_Y, PERSWGT)
 
 hh1_sel <- hh1 %>% 
   select(IMONTH_S, IBORN_M, BORN_Y, SEX, YEAR_S, COUNTRY, KID_1, KID_2, KID_3, KID_4, KID_5,
          KID_6, KID_7, KID_8, KID_9, KID_10, KID_11, KID_12, KID_13, KID_14, KID_15, KID_16,
          UNION_1, UNION_2, UNION_3, UNION_4, UNION_5, UNION_6, UNION_7, UNION_8, UNION_9,
-         RESPID, EDU_3, IEDU_Y)
+         RESPID, EDU_3, IEDU_Y, PERSWGT)
 
 hh2_sel <- hh2 %>% 
   select(IMONTH_S, IBORN_M, BORN_Y, SEX, YEAR_S, COUNTRY, KID_1, KID_2, KID_3, KID_4, KID_5,
          KID_6, KID_7, KID_8, KID_9, KID_10, KID_11, KID_12, KID_13, KID_14, KID_15, KID_16,
          UNION_1, UNION_2, UNION_3, UNION_4, UNION_5, UNION_6, UNION_7, UNION_8, UNION_9,
-         RESPID, EDU_3, IEDU_Y)
+         RESPID, EDU_3, IEDU_Y, PERSWGT)
 
 
 hh <- hh0_sel %>% 
@@ -141,5 +141,5 @@ d_hh <- hh %>%
          edu2 = ifelse(IEDU_Y >= median_eduy, "High", "Low")) %>% 
   ungroup() %>% 
   select(id = RESPID, country, sex = SEX, age, bc_cate, birthyear = BORN_Y, education = EDU_3, 
-         everbirth, everunion, dataset = COUNTRY, datasetname, edu2)
-saveRDS(d_hh, file = "../../../Users/rymo/OneDrive - Syddansk Universitet/BigData/tempo/d_hh.rds")
+         everbirth, everunion, dataset = COUNTRY, datasetname, edu2, weight = PERSWGT)
+saveRDS(d_hh, file = "../../../Library/CloudStorage/GoogleDrive-ryohei.mogi@upf.edu/My Drive/BigData/tempo/d_hh.rds")

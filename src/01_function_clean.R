@@ -25,7 +25,8 @@ func_makedata <- function(oridata, minage){
   D_alledu <- D %>% 
     filter(education %in% c("Low", "Medium", "High")) %>% 
     group_by(country, sex, bc_cate) %>% 
-    summarise(TotalN = sum(TotalN, na.rm = T), ChildlessN = sum(ChildlessN, na.rm = T), 
+    summarise(TotalN = sum(TotalN, na.rm = T), 
+              ChildlessN = sum(ChildlessN, na.rm = T), 
               NeverInUnionN = sum(NeverInUnionN, na.rm = T)) %>% 
     ungroup() %>% 
     mutate(education = "All")
@@ -41,19 +42,19 @@ func_makedata2 <- function(oridata, minage){
   D_total <- oridata %>%
     filter(age >= minage) %>% 
     group_by(country, sex, bc_cate, edu2) %>% 
-    tally(name = "TotalN")
+    tally(name = "TotalN", wt = weight)
   
   D_childless <- oridata %>%
     filter(age >= minage) %>% 
     group_by(country, sex, bc_cate, edu2) %>% 
-    count(everbirth, name = "ChildlessN") %>% 
+    count(everbirth, name = "ChildlessN", wt = weight) %>% 
     filter(everbirth == 0) %>% 
     select(-everbirth)
   
   D_union <- oridata %>%
     filter(age >= minage, everbirth == 0) %>% 
     group_by(country, sex, bc_cate, edu2) %>% 
-    count(everunion, name = "NeverInUnionN") %>% 
+    count(everunion, name = "NeverInUnionN", wt = weight) %>% 
     filter(everunion == 0) %>% 
     select(-everunion)
   

@@ -1,3 +1,7 @@
+ESS39 <- readRDS("../../../Library/CloudStorage/GoogleDrive-ryohei.mogi@upf.edu/My Drive/BigData/tempo/ESS39.rds")
+d_hh <- readRDS("../../../Library/CloudStorage/GoogleDrive-ryohei.mogi@upf.edu/My Drive/BigData/tempo/d_hh.rds")
+d_dhs <- readRDS("../../../Library/CloudStorage/GoogleDrive-ryohei.mogi@upf.edu/My Drive/BigData/tempo/dhs_sel.rds")
+
 d_all <- d_hh %>% 
   bind_rows(d_dhs) %>% 
   bind_rows(ESS39)
