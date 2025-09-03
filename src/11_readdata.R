@@ -57,5 +57,8 @@ chile <- read.dta13("../../../Library/CloudStorage/GoogleDrive-ryohei.mogi@upf.e
 
 
 # HDI
-hdi <- read_excel("../../../Users/rymo/Dropbox (Personal)/Proj_Partnership/Research_UCP/Analysis/data/HDR21-22_Statistical_Annex_HDI_Table.xlsx", sheet = "Table 1",
+hdi <- read_excel("../../../Dropbox/Proj_Partnership/Research_UCP/Analysis/data/HDR21-22_Statistical_Annex_HDI_Table.xlsx", sheet = "Table 1",
                   skip = 4)[-c(1:3), c(2, 3)]
+
+# GII
+un <- read.dta13("out/un_data_90001020.dta", nonint.factors = T, convert.factors = T)

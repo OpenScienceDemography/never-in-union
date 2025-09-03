@@ -1,23 +1,5 @@
-#### try to explore a scatter version to show our findings
-
-# prepare the session
-library(tidyverse)
-library(countrycode)
-library(readstata13)
-library(readxl)
-library(foreign)
-library(egg)
-library(ggrepel)
-library(gapminder)
-
-`%out%` = Negate(`%in%`)
-
-col7 <- c("#332288", "#88CCEE", "#117733", "#999933", "#FD8D3C", "#882255", "#DDDDDD")
-Mycol <- c("#08306B", "#238B45", "#FD8D3C", "#D4B9DA", "#FFEDA0")
-
 # load the prepared dataset
 d_all_sel <- read.csv("out/d_all_minage35_edu2_.csv")
-un <- read.dta13("out/un_data_90001020.dta", nonint.factors = T, convert.factors = T)
 
 d_un <- un %>% 
   filter(bc_cate %in% c("1960-1969", "1970-1979")) %>% 
@@ -70,7 +52,7 @@ never <- d_all_sel %>%
          p_niu = n_niu / n_childless * 100) %>% 
   left_join(d_un, by = "country") %>% 
   filter(!is.na(gii))
-write.csv(never, "out/dataset_forEPC_alledu.csv")
+write.csv(never, "out/dataset_alledu.csv")
 
 never_edu2 <- d_all_sel %>% 
   filter(bc_cate %in% c("1960-1969", "1970-1979"),
@@ -110,7 +92,7 @@ never_edu2 <- d_all_sel %>%
          edu2 = factor(edu2, levels = c("Low", "High"))) %>% 
   left_join(d_un, by = "country") %>% 
   filter(!is.na(gii))
-write.csv(never_edu2, "out/dataset_forEPC_byedu2.csv")
+write.csv(never_edu2, "out/dataset_byedu2.csv")
   
 # % of childless
 level_country <- never %>% 
@@ -146,6 +128,7 @@ never %>%
   geom_point(aes(group = country, colour = continent)) +
   geom_smooth(method = "gam") +
   scale_colour_manual(values = Mycol) +
+  xlim(0, 0.8) +
   labs(x = "Gender Inequality Index", y = "% never-formed-union among childless population") +
   theme_minimal() +
   theme(legend.position = "bottom",
@@ -162,13 +145,15 @@ never %>%
   select(country, sex, edu2, p_niu, continent, gii) %>% 
   filter(edu2 == "All") %>% 
   spread(key = sex, value = p_niu) %>% 
-  mutate(diff = Men / Women) %>% 
+  mutate(diff = Women / Men) %>% 
   filter(Women > 0) %>% 
   ggplot(aes(x = gii, y = diff)) +
   geom_point(aes(group = country, colour = continent)) +
   geom_smooth(method = "gam") +
   scale_colour_manual(values = c(Mycol[1:4], col7[6])) +
-  labs(x = "Gender Inequality Index", y = "Ratio of Men / Women") +
+  xlim(0, 0.8) +
+  ylim(0, 3) +
+  labs(x = "Gender Inequality Index", y = "Ratio of Women / Men") +
   theme_minimal() +
   theme(legend.position = "bottom",
         legend.text = element_text(size = 18),
@@ -178,6 +163,45 @@ never %>%
         strip.text = element_text(size = 18),
         panel.spacing = unit(2, "lines"))
 ggsave("out/gii_p-niu_genderdiff.png", width = 7.5, height = 5, bg = "white")
+
+# x: GII, y: % of never-in-union among childless population by education
+never_edu2 %>% 
+  filter(sex == "Men") |> 
+  ggplot(aes(x = gii, y = p_niu)) +
+  facet_wrap(~ edu2) +
+  geom_point(aes(group = country, colour = continent)) +
+  geom_smooth(method = "gam") +
+  scale_colour_manual(values = Mycol) +
+  xlim(0, 0.8) +
+  labs(x = "Gender Inequality Index", y = "% never-formed-union among male childless population") +
+  theme_minimal() +
+  theme(legend.position = "bottom",
+        legend.text = element_text(size = 18),
+        legend.title = element_blank(),
+        axis.title = element_text(size = 18),
+        axis.text = element_text(size = 15, face = 2),
+        strip.text = element_text(size = 18),
+        panel.spacing = unit(2, "lines"))
+ggsave("out/gii_p-niu_men_edu.png", width = 9, height = 6.5, bg = "white")
+
+never_edu2 %>% 
+  filter(sex == "Women") |> 
+  ggplot(aes(x = gii, y = p_niu)) +
+  facet_wrap(~ edu2) +
+  geom_point(aes(group = country, colour = continent)) +
+  geom_smooth(method = "gam") +
+  scale_colour_manual(values = Mycol) +
+  xlim(0, 0.8) +
+  labs(x = "Gender Inequality Index", y = "% never-formed-union among female childless population") +
+  theme_minimal() +
+  theme(legend.position = "bottom",
+        legend.text = element_text(size = 18),
+        legend.title = element_blank(),
+        axis.title = element_text(size = 18),
+        axis.text = element_text(size = 15, face = 2),
+        strip.text = element_text(size = 18),
+        panel.spacing = unit(2, "lines"))
+ggsave("out/gii_p-niu_women_edu.png", width = 9, height = 6.5, bg = "white")
 
 # x: GII, y: ratio of % never-in-union by education
 ratio_edu <- d_all_sel %>% 
@@ -219,19 +243,18 @@ ratio_edu <- d_all_sel %>%
   left_join(d_un, by = "country") %>% 
   filter(!is.na(gii)) %>% 
   select(country, sex, edu2, p_niu, continent, gii) %>% 
-  spread(key = sex, value = p_niu) %>% 
-  mutate(diff = Men / Women) %>% 
-  filter(Women > 0)
-write.csv(ratio_edu, "out/ratio_forEPC_byedu2.csv")
+  spread(key = edu2, value = p_niu) %>% 
+  mutate(diff = Low / High)
+write.csv(ratio_edu, "out/ratio_niu_byedu2.csv")
 
 ratio_edu %>% 
   ggplot(aes(x = gii, y = diff)) +
-  facet_wrap(~ edu2) + 
+  facet_wrap(~ sex) + 
   geom_point(aes(group = country, colour = continent)) +
   geom_smooth(method = "gam") +
   scale_colour_manual(values = c(Mycol[1:4], col7[6])) +
-  ylim(0, 10) +
-  labs(x = "Gender Inequality Index", y = "Ratio of Men / Women") +
+  xlim(0, 0.8) +
+  labs(x = "Gender Inequality Index", y = "Ratio of Low / High") +
   theme_minimal() +
   theme(legend.position = "bottom",
         legend.text = element_text(size = 18),
@@ -240,4 +263,4 @@ ratio_edu %>%
         axis.text = element_text(size = 15, face = 2),
         strip.text = element_text(size = 18),
         panel.spacing = unit(2, "lines"))
-ggsave("out/gii_p-niu_genderdiff_edu.png", width = 9, height = 7.5, bg = "white")
+ggsave("out/gii_p-niu_edudiff.png", width = 9, height = 7.5, bg = "white")

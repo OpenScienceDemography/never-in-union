@@ -47,28 +47,28 @@ select(id, country, sex, age = agea, bc_cate, birthyear = yrbrn, education, edu2
        everbirth, everunion, dataset, datasetname, weight = anweight)
 saveRDS(ESS39, file = "../../../Library/CloudStorage/GoogleDrive-ryohei.mogi@upf.edu/My Drive/BigData/tempo/ESS39.rds")
 
-##
-ESS_total <- ESS39 %>%
-  filter(agea >= 35) %>% 
-  group_by(country, sex, bc_cate, education) %>% 
-  tally(name = "TotalN")
-
-ESS_childless <- ESS39 %>%
-  filter(agea >= 35) %>% 
-  group_by(country, sex, bc_cate, education) %>% 
-  count(bthcld, name = "ChildlessN") %>% 
-  filter(bthcld == 2) %>% 
-  select(-bthcld)
-
-ESS_union <- ESS39 %>%
-  filter(agea >= 35, bthcld == 2) %>% 
-  group_by(country, sex, bc_cate, education) %>% 
-  count(evlvptn, name = "NeverInUnionN") %>% 
-  filter(evlvptn == 2) %>% 
-  select(-evlvptn)
-
-ESS_total <- ESS_total %>% 
-  left_join(ESS_childless, by = c("country", "sex", "bc_cate", "education")) %>% 
-  left_join(ESS_union, by = c("country", "sex", "bc_cate", "education"))
-saveRDS(ESS_total, file = "../../../Library/CloudStorage/GoogleDrive-ryohei.mogi@upf.edu/My Drive/BigData/tempo/ESS_total.rds")
+###
+#ESS_total <- ESS39 %>%
+#  filter(agea >= 35) %>% 
+#  group_by(country, sex, bc_cate, education) %>% 
+#  tally(name = "TotalN")
+#
+#ESS_childless <- ESS39 %>%
+#  filter(agea >= 35) %>% 
+#  group_by(country, sex, bc_cate, education) %>% 
+#  count(bthcld, name = "ChildlessN") %>% 
+#  filter(bthcld == 2) %>% 
+#  select(-bthcld)
+#
+#ESS_union <- ESS39 %>%
+#  filter(agea >= 35, bthcld == 2) %>% 
+#  group_by(country, sex, bc_cate, education) %>% 
+#  count(evlvptn, name = "NeverInUnionN") %>% 
+#  filter(evlvptn == 2) %>% 
+#  select(-evlvptn)
+#
+#ESS_total <- ESS_total %>% 
+#  left_join(ESS_childless, by = c("country", "sex", "bc_cate", "education")) %>% 
+#  left_join(ESS_union, by = c("country", "sex", "bc_cate", "education"))
+#saveRDS(ESS_total, file = "../../../Library/CloudStorage/GoogleDrive-ryohei.mogi@upf.edu/My Drive/BigData/tempo/ESS_total.rds")
 
