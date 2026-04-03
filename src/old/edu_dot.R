@@ -1,4 +1,4 @@
-d_edu <- read.csv("out/D_all_minage35_edu2.csv")
+﻿d_edu <- read.csv("out/old/D_all_minage35_edu2.csv")
 
 col7 <- c("#332288", "#88CCEE", "#117733", "#999933", "#FD8D3C", "#882255", "#DDDDDD")
 

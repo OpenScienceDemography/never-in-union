@@ -1,4 +1,4 @@
-hh0_sel <- hh0 %>% 
+﻿hh0_sel <- hh0 %>% 
   select(IMONTH_S, IBORN_M, BORN_Y, SEX, YEAR_S, COUNTRY, KID_1, KID_2, KID_3, KID_4, KID_5,
          KID_6, KID_7, KID_8, KID_9, KID_10, KID_11, KID_12, KID_13, KID_14, KID_15, KID_16,
          UNION_1, UNION_2, UNION_3, UNION_4, UNION_5, UNION_6, UNION_7, UNION_8, UNION_9,

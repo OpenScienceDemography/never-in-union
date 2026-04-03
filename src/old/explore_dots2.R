@@ -1,4 +1,4 @@
-#### try to explore a scatter version to show our findings
+﻿#### try to explore a scatter version to show our findings
 
 # prepare the session
 library(tidyverse)
@@ -15,7 +15,7 @@ col7 <- c("#332288", "#88CCEE", "#117733", "#999933", "#FD8D3C", "#882255", "#DD
 Mycol <- c("#08306B", "#238B45", "#FD8D3C", "#D4B9DA", "#FFEDA0")
 
 # load the prepared dataset
-d_all_sel <- read.csv("out/d_all_minage35_edu2.csv")
+d_all_sel <- read.csv("out/old/D_all_minage35_edu2.csv")
 
 library(gapminder)
 
@@ -50,7 +50,7 @@ never <- d_all_sel %>%
          TotalN >= 50) %>% 
   ungroup()
 
-write.csv(never, "out/data_analysis.csv")
+write.csv(never, "out/old/data_analysis.csv")
 
 # % of childless among total population
 level_country <- never %>% 
@@ -218,7 +218,7 @@ all <- temp %>%
   ungroup() %>% 
   count(country) %>% 
   filter(n == 2)
-write.csv(all, "out/dataforall.csv")
+write.csv(all, "out/old/dataforall.csv")
 
 
 
@@ -234,7 +234,7 @@ fig_all <- temp %>%
   rename(ratio_neverinunion = ratio) %>% 
   select(-key) %>% 
   left_join(never_childless, by = c("country", "sex", "continent", "bc"))
-write.csv(fig_all, "out/dataforall.csv")
+write.csv(fig_all, "out/old/dataforall.csv")
 
 fig_all %>% 
   ggplot(aes(x = ratio_childless, y = ratio_neverinunion, group = country, colour = continent)) +
@@ -261,7 +261,7 @@ fig_women <- temp %>%
   rename(ratio_neverinunion = ratio) %>% 
   select(-key) %>% 
   left_join(never_childless, by = c("country", "continent", "bc"))
-write.csv(fig_women, "out/dataforwomen.csv")
+write.csv(fig_women, "out/old/dataforwomen.csv")
 
 fig_women %>% 
   ggplot(aes(x = ratio_childless, y = ratio_neverinunion, group = country, colour = continent)) +

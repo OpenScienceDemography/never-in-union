@@ -1,7 +1,7 @@
-# load the prepared dataset
+﻿# load the prepared dataset
 d_all_sel <- read.csv("out/d_all_minage35_edu2_.csv")
 
-un <- read.dta13("out/un_data_900010.dta")
+un <- read.dta13("dat/un_data_900010.dta")
 
 d_un <- un %>% 
   filter(bc_cate %in% c("1960-1969", "1970-1979")) %>% 
@@ -54,7 +54,7 @@ never <- d_all_sel %>%
          p_niu = n_niu / n_childless * 100) %>% 
   left_join(d_un, by = "country") %>% 
   filter(!is.na(gii))
-# write.csv(never, "out/dataset_alledu.csv")
+# write.csv(never, "out/old/dataset_alledu.csv")
 
 never_edu2 <- d_all_sel %>% 
   filter(bc_cate %in% c("1960-1969", "1970-1979"),
@@ -94,7 +94,7 @@ never_edu2 <- d_all_sel %>%
          edu2 = factor(edu2, levels = c("Low", "High"))) %>% 
   left_join(d_un, by = "country") %>% 
   filter(!is.na(gii))
-# write.csv(never_edu2, "out/dataset_byedu2.csv")
+# write.csv(never_edu2, "out/old/dataset_byedu2.csv")
   
 # % of childless
 level_country <- never %>% 

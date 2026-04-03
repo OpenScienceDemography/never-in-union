@@ -1,4 +1,4 @@
-D_all_sel <- read.csv("out/D_all_minage35_edu2.csv")
+﻿D_all_sel <- read.csv("out/old/D_all_minage35_edu2.csv")
 
 D_all_sel <- D_all_sel %>% 
   mutate(prop_childless = (ChildlessN / TotalN) * 100,

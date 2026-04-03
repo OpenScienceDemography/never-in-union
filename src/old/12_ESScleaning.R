@@ -1,4 +1,4 @@
-ESS3sel <- ESS3 %>% 
+﻿ESS3sel <- ESS3 %>% 
   select(idno, cntry, agea, pspwght, pweight, evlvptn, gndr, yrbrn, edulvla, bthcld, eduyrs) %>% 
   mutate(dataset = "ESS3")
 

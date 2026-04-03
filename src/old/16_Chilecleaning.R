@@ -1,4 +1,4 @@
-chile %>% 
+﻿chile %>% 
   mutate(sex = ifelse(gender == 1, "Men", "Women"),
          bc_cate = case_when(cohort == 1910 ~ "1910-1919",
                              cohort == 1920 ~ "1920-1929",

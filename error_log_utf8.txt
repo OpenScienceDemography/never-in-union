@@ -1,0 +1,161 @@
+﻿Rscript : ΓöÇΓöÇ 
+Attaching core 
+tidyverse packages ΓöÇΓö
+ÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓö
+ÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓö
+ÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ 
+tidyverse 2.0.0 ΓöÇΓöÇ
+At line:1 char:1
++ Rscript 
+src/1-prepare-data.R > 
+error_log.txt 2>&1
++ ~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~
+~~~
+    + CategoryInfo      
+        : NotSpecified  
+  : (ΓöÇΓöÇ Attachin.   
+ ..se 2.0.0 ΓöÇΓöÇ:S    
+tring) [], RemoteEx    
+ception
+    + FullyQualifiedErr 
+   orId : NativeComman  
+  dError
+ 
+Γ£ö dplyr     1.2.0     
+Γ£ö readr     2.2.0
+Γ£ö forcats   1.0.1     
+Γ£ö stringr   1.6.0
+Γ£ö ggplot2   4.0.2     
+Γ£ö tibble    3.3.1
+Γ£ö lubridate 1.9.5     
+Γ£ö tidyr     1.3.2
+Γ£ö purrr     1.2.1     
+ΓöÇΓöÇ Conflicts ΓöÇΓöÇΓ
+öÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓ
+öÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓ
+öÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓ
+öÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓ
+öÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ 
+tidyverse_conflicts() 
+ΓöÇΓöÇ
+Γ£û dplyr::filter() 
+masks stats::filter()
+Γ£û dplyr::lag()    
+masks stats::lag()
+Γä╣ Use the conflicted 
+package (<http://conflic
+ted.r-lib.org/>) to 
+force all conflicts to 
+become errors
+Linking to GEOS 3.13.1, 
+GDAL 3.11.4, PROJ 
+9.7.0; sf_use_s2() is 
+TRUE
+
+Attaching package: 
+'janitor'
+
+The following objects 
+are masked from 
+'package:stats':
+
+    chisq.test, 
+fisher.test
+
+Loading required 
+package: sysfonts
+Loading required 
+package: showtextdb
+
+Attaching package: 
+'cowplot'
+
+The following object is 
+masked from 
+'package:patchwork':
+
+    align_plots
+
+The following object is 
+masked from 
+'package:lubridate':
+
+    stamp
+
+Γä╣ Sourcing gist "653e1
+040a07364ae82b1bb312501a
+184"
+Γä╣ SHA-1 hash of file 
+is "2e55732ef00e9b90b272
+2628e25e97882e0b65cf"
+Found existing 
+aggregate file. 
+Skipping deep raw 
+reprocessing.
+New names:
+ΓÇó `` -> `...1`
+Warning message:
+There was 1 warning in 
+`mutate()`.
+Γä╣ In argument: `iso3 
+= countrycode::countryco
+de(country, origin =
+  "country.name", 
+destination = "iso3c")`.
+Caused by warning:
+! Some values were not 
+matched unambiguously: 
+The UK, The US
+To fix unmatched 
+values, please use the 
+`custom_match` 
+argument. If you think 
+the default matching 
+rules should be 
+improved, please file 
+an issue at https://gith
+ub.com/vincentarelbundoc
+k/countrycode/issues 
+Warning message:
+There was 1 warning in 
+`transmute()`.
+Γä╣ In argument: `iso3 
+= countrycode::countryco
+de(country, origin =
+  "country.name", 
+destination = "iso3c")`.
+Caused by warning:
+! Some values were not 
+matched unambiguously: 
+Netherlands Antilles
+To fix unmatched 
+values, please use the 
+`custom_match` 
+argument. If you think 
+the default matching 
+rules should be 
+improved, please file 
+an issue at https://gith
+ub.com/vincentarelbundoc
+k/countrycode/issues 
+Warning message:
+There was 1 warning in 
+`stopifnot()`.
+Γä╣ In argument: `iso3 
+= countrycode::countryco
+de(...)`.
+Caused by warning:
+! Some values were not 
+matched unambiguously: 
+Kosovo
+To fix unmatched 
+values, please use the 
+`custom_match` 
+argument. If you think 
+the default matching 
+rules should be 
+improved, please file 
+an issue at https://gith
+ub.com/vincentarelbundoc
+k/countrycode/issues 

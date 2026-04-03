@@ -1,4 +1,4 @@
-#### To explore Ewa's idea
+﻿#### To explore Ewa's idea
 
 # prepare the session
 library(tidyverse)
@@ -16,7 +16,7 @@ Mycol <- c("#08306B", "#238B45", "#FD8D3C", "#D4B9DA", "#FFEDA0")
 
 # load the prepared dataset
 d_all_sel <- read.csv("out/d_all_minage35_edu2_.csv")
-un <- read.dta13("out/un_data_90001020.dta", nonint.factors = T, convert.factors = T)
+un <- read.dta13("dat/un_data_90001020.dta", nonint.factors = T, convert.factors = T)
 
 gap <- gapminder_unfiltered %>% 
   #clean_names() %>% 
@@ -197,7 +197,7 @@ all <- temp %>%
   ungroup() %>% 
   count(country) %>% 
   filter(n == 2)
-write.csv(all, "out/dataforall.csv")
+write.csv(all, "out/old/dataforall.csv")
 
 never_childless <- temp %>% 
   right_join(all, by = "country") %>% 
@@ -211,7 +211,7 @@ fig_all <- temp %>%
   rename(ratio_neverinunion = ratio) %>% 
   select(-key) %>% 
   left_join(never_childless, by = c("country", "sex", "gii_level", "bc"))
-write.csv(fig_all, "out/dataforall.csv")
+write.csv(fig_all, "out/old/dataforall.csv")
 
 fig_all %>% 
   ggplot(aes(x = ratio_childless, y = ratio_neverinunion, group = country, colour = gii_level)) +
@@ -265,7 +265,7 @@ all <- temp %>%
   ungroup() %>% 
   count(country) %>% 
   filter(n == 2)
-write.csv(all, "out/dataforall.csv")
+write.csv(all, "out/old/dataforall.csv")
 
 never_childless <- temp %>% 
   right_join(all, by = "country") %>% 
@@ -279,7 +279,7 @@ fig_all <- temp %>%
   rename(ratio_neverinunion = ratio) %>% 
   select(-key) %>% 
   left_join(never_childless, by = c("country", "sex", "gii_level", "bc"))
-write.csv(fig_all, "out/dataforall.csv")
+write.csv(fig_all, "out/old/dataforall.csv")
 
 fig_all %>% 
   ggplot(aes(x = ratio_gii, y = ratio_neverinunion, group = country, colour = gii_level)) +
@@ -347,7 +347,7 @@ all <- temp %>%
   ungroup() %>% 
   count(country, edu2) %>% 
   filter(n == 2)
-write.csv(all, "out/dataforall.csv")
+write.csv(all, "out/old/dataforall.csv")
 
 never_childless <- temp %>% 
   right_join(all, by = c("country", "edu2")) %>% 
@@ -361,7 +361,7 @@ fig_all <- temp %>%
   rename(ratio_neverinunion = ratio) %>% 
   select(-key) %>% 
   left_join(never_childless, by = c("country", "sex", "edu2", "gii_level", "bc"))
-write.csv(fig_all, "out/dataforall.csv")
+write.csv(fig_all, "out/old/dataforall.csv")
 
 fig_all %>% 
   ggplot(aes(x = ratio_gii, y = ratio_neverinunion, group = country, colour = gii_level)) +

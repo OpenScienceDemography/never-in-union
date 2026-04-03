@@ -1,4 +1,4 @@
-#D_ggs_w1 <- ggs_w1 %>% 
+﻿#D_ggs_w1 <- ggs_w1 %>% 
 #  select(arid, ayear, country = acountry, age = aage, asex, numbiol, aparstat, a333, a148, birthyear = abyear) %>% 
 #  mutate(id = paste(arid, ayear, country, sep = "-"),
 #         sex = ifelse(asex == "female", "Women", "Men"),

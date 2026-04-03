@@ -1,4 +1,4 @@
-func_makedata <- function(oridata, minage){
+﻿func_makedata <- function(oridata, minage){
   D_total <- oridata %>%
     filter(age >= minage) %>% 
     group_by(country, sex, bc_cate, education) %>% 

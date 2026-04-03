@@ -1,4 +1,4 @@
-#dhs_sel <- dhs %>% 
+﻿#dhs_sel <- dhs %>% 
 #  rename(id = caseid, country = country_name, birthyear = v010, age = v012) %>% 
 #  group_by(country) %>% 
 #  # select only the recent survey year

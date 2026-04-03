@@ -1,4 +1,4 @@
-ESS39 <- readRDS("../../../Library/CloudStorage/GoogleDrive-ryohei.mogi@upf.edu/My Drive/BigData/tempo/ESS39.rds")
+﻿ESS39 <- readRDS("../../../Library/CloudStorage/GoogleDrive-ryohei.mogi@upf.edu/My Drive/BigData/tempo/ESS39.rds")
 d_hh <- readRDS("../../../Library/CloudStorage/GoogleDrive-ryohei.mogi@upf.edu/My Drive/BigData/tempo/d_hh.rds")
 d_dhs <- readRDS("../../../Library/CloudStorage/GoogleDrive-ryohei.mogi@upf.edu/My Drive/BigData/tempo/dhs_sel.rds")
 
@@ -11,7 +11,7 @@ d_all_sel <- d_all_sel %>%
   mutate(prop_childless = round((ChildlessN / TotalN) * 100, 1),
          prop_neverinunion = round((NeverInUnionN / ChildlessN) * 100, 1),
          education = factor(education, levels = c("All", "Low", "Medium", "High")))
-write.csv(d_all_sel, "out/d_all_minage35_edu2.csv")
+write.csv(d_all_sel, "out/old/D_all_minage35_edu2.csv")
 
 d_all_sel %>% 
   filter(education == "All") %>% View()

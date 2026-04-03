@@ -1,4 +1,4 @@
-#### try to explore a scatter version to show our findings
+﻿#### try to explore a scatter version to show our findings
 
 # prepare the session
 library(tidyverse)
@@ -15,7 +15,7 @@ col7 <- c("#332288", "#88CCEE", "#117733", "#999933", "#FD8D3C", "#882255", "#DD
 Mycol <- c("#08306B", "#238B45", "#FD8D3C", "#D4B9DA", "#FFEDA0")
 
 # load the prepared dataset
-d_all_sel <- read.csv("out/d_all_minage35_edu2.csv")
+d_all_sel <- read.csv("out/old/D_all_minage35_edu2.csv")
 
 library(gapminder)
 

@@ -1,4 +1,4 @@
-# ESS
+﻿# ESS
 # downloaded on June 5 2022 except ESS 10
 #ESS1 <- read.spss("../../../../OneDrive - Syddansk Universitet/BigData/ESS/ESS1e06_6.sav", 
 #                  to.data.frame = T, use.value.labels = F)
@@ -57,8 +57,8 @@ chile <- read.dta13("../../../Library/CloudStorage/GoogleDrive-ryohei.mogi@upf.e
 
 
 # HDI
-hdi <- read_excel("../../../Dropbox/Proj_Partnership/Research_UCP/Analysis/data/HDR21-22_Statistical_Annex_HDI_Table.xlsx", sheet = "Table 1",
+hdi <- read_excel("dat/HDR21-22_Statistical_Annex_HDI_Table.xlsx", sheet = "Table 1",
                   skip = 4)[-c(1:3), c(2, 3)]
 
 # GII
-un <- read.dta13("out/un_data_90001020.dta", nonint.factors = T, convert.factors = T)
+un <- read.dta13("dat/un_data_90001020.dta", nonint.factors = T, convert.factors = T)

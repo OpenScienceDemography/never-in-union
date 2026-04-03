@@ -7,7 +7,7 @@
 #===============================================================================
 
 library(tidyverse)
-library(magrittr)
+# no magrittr needed
 library(readxl)
 library(patchwork)
 library(paletteer)
@@ -36,4 +36,8 @@ library(ggflags)
 devtools::source_gist("653e1040a07364ae82b1bb312501a184")
 theme_set(theme_ik())
 
+# custom operators (from old 00_setting.R)
+`%out%` = Negate(`%in%`)
+col7 <- c("#332288", "#88CCEE", "#117733", "#999933", "#FD8D3C", "#882255", "#DDDDDD")
+Mycol <- c("#08306B", "#238B45", "#FD8D3C", "#D4B9DA", "#FFEDA0")
 
