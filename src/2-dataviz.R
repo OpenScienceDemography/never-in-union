@@ -92,7 +92,7 @@ gap_colors <- c(
 
 never %>%
   ggplot(aes(p_childless, country)) +
-  geom_hline(yintercept = seq(1, 80, 2), size = 4, color = "#ccffff") +
+  geom_hline(yintercept = seq(1, 90, 2), size = 4, color = "#eaeaea") +
   geom_vline(xintercept = 0, size = 2, color = "#004444AA") +
   geom_line(aes(group = country, color = continent), size = 1, alpha = 3 / 4) +
   geom_point(size = 3, aes(fill = sex), shape = 21, stroke = NA) +
@@ -145,7 +145,7 @@ never %>%
     axis.title = element_text(face = 2)
   ) +
   labs(
-    x = "proportion of childless population aged 35+, %",
+    x = "Proportion of childless population aged 35+, %",
     y = NULL,
     # title = "Not having children is often driven by inability to form a union",
     caption = "\nData: GGS wave 1, most recent DHS, and 1992 HDI; Sample: Individuals aged 35+ born in 1960s\nCountries are sorted by Gender Inequality Index from the lowest (top) to the highest (bottom)"
@@ -155,11 +155,11 @@ never %>%
       sex = c("Men", "Women"),
       sign = c("♂", "♀")
     ),
-    aes(label = sign),
+    aes(label = sex),
     x = c(33, 5),
-    y = 75,
-    size = 20,
-    hjust = 0,
+    y = 85,
+    size = 10,
+    hjust = 0.5,
     colour = c("#1B5E20", "#4FC3F7"),
     family = "Roboto",
     fontface = 2
@@ -220,13 +220,13 @@ fig2main <- never %>%
       sex = c("Men", "Women"),
       sign = c("♂", "♀")
     ),
-    aes(label = sign),
-    x = c(.05, .65),
-    y = 80,
-    size = 20,
-    hjust = 0,
+    aes(label = sex),
+    x = c(.08, .64),
+    y = 84,
+    size = 10,
+    hjust = 0.5,
     colour = c("#1B5E20", "#4FC3F7"),
-    family = "Roboto",
+    family = "Roboto Condensed",
     fontface = 2
   )
 
@@ -270,13 +270,14 @@ fig3main <- never_edu2 %>%
       sign = c("♂", "♀")
     ) |>
       crossing(edu2 = c("Low", "High")),
-    aes(label = sign),
-    x = .05,
-    y = 90,
-    size = 20,
+    aes(label = sex),
+    x = .02,
+    y = 98,
+    size = 10,
     hjust = 0,
+    vjust = 1,
     colour = c("#1B5E20", "#4FC3F7") |> rep(each = 2),
-    family = "Roboto",
+    family = "Roboto Condensed",
     fontface = 2
   ) +
   geom_text(
@@ -285,14 +286,16 @@ fig3main <- never_edu2 %>%
       sign = c("♂", "♀")
     ) |>
       crossing(edu2 = c("Low", "High")),
-    aes(label = paste0("Education: ", edu2)),
+    aes(label = paste0("Education:\n", edu2)),
     x = .8,
-    y = 90,
+    y = 98,
     size = 7,
     hjust = 1,
+    vjust = 1,
     colour = c("#1B5E20", "#4FC3F7") |> rep(each = 2),
-    family = "Roboto",
-    fontface = 2
+    family = "Roboto Condensed",
+    fontface = 2,
+    lineheight = .95
   )
 
 # assemble
