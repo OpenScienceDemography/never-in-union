@@ -1,0 +1,84 @@
+"Country","Data source","continent","Sample size","GII","% childless (men)","% childless (women)","% never-in-union among childless (men)","% never-in-union among childless (women)"
+"Sweden","ESS; HH","Europe & North America",3957,0.056,19,11.6,35.4,17.9
+"Denmark","ESS","Europe & North America",834,0.062,20.8,14.3,15.4,14.2
+"Netherlands","ESS; HH","Europe & North America",6260,0.076,28.4,20.3,33,23.1
+"Finland","ESS","Europe & North America",884,0.077,24.5,16.6,30.5,21.4
+"Switzerland","ESS","Europe & North America",953,0.08,25.3,21.2,13.5,19.8
+"Norway","ESS; HH","Europe & North America",4864,0.086,19.1,12,32.2,25.6
+"Belgium","ESS; HH","Europe & North America",3102,0.113,21.2,14,34.1,26
+"Germany","ESS; HH","Europe & North America",8583,0.115,31.9,17.6,36.1,24.9
+"Spain","ESS; HH","Europe & North America",3088,0.117,23.9,16.6,37.1,35
+"Austria","ESS; HH","Europe & North America",3847,0.13,28.4,19.9,38.4,25.5
+"Canada","HH","Europe & North America",11535,0.142,23.9,19.9,27.9,25.5
+"Italy","ESS","Europe & North America",944,0.155,32.9,26.4,47.4,40.1
+"Czechia","ESS; HH","Europe & North America",2637,0.157,13.3,7.6,36.8,36.6
+"Portugal","ESS","Europe & North America",810,0.161,17.8,12,45.3,41.4
+"France","ESS; HH","Europe & North America",3286,0.162,22.5,12.9,35.4,32.8
+"Croatia","ESS","Europe & North America",607,0.164,21.5,11.5,44.7,36.7
+"Ireland","ESS","Europe & North America",1167,0.183,26.2,12.4,45.1,36.4
+"Poland","ESS; HH","Europe & North America",5499,0.183,17,11.3,62.1,39.8
+"The UK","ESS; HH","Europe & North America",4413,0.194,22.7,14.4,22,17.2
+"Lithuania","ESS; HH","Europe & North America",2678,0.206,15.4,10.5,53.8,61.8
+"Slovakia","ESS","Europe & North America",695,0.209,19.5,11.9,75.1,55.7
+"Estonia","ESS; HH","Europe & North America",2324,0.223,15.4,7.7,38.7,48.5
+"The US","HH","Europe & North America",3963,0.262,20.7,12.3,28.1,23.6
+"Hungary","ESS; HH","Europe & North America",2968,0.266,24.2,10.6,50.7,40.2
+"Bulgaria","ESS; HH","Europe & North America",3948,0.281,18.5,8.5,68.7,60.9
+"Albania","DHS","Europe & North America",10096,0.283,11.4,3.3,39.8,53.3
+"Kazakhstan","DHS; HH","Asia",6603,0.328,16.9,13.6,60.3,71.7
+"Republic of Moldova","DHS","Europe & North America",2535,0.34,9.5,4.5,27.1,25.8
+"Ukraine","DHS; ESS","Europe & North America",4136,0.341,13.5,6.6,36.6,30.6
+"Azerbaijan","DHS","Asia",3647,0.346,6,12.1,36.8,65.7
+"Russia","ESS; HH","Europe & North America",2537,0.355,13.1,6.7,38,45
+"Romania","HH","Europe & North America",2467,0.396,19.2,10,44.5,37.6
+"Armenia","DHS","Asia",3117,0.399,10.3,9,72.2,68.3
+"Georgia","HH","Asia",2349,0.402,15.9,13.8,72,76.9
+"Kyrgyzstan","DHS","Asia",3656,0.414,3.8,3.7,39.8,35.1
+"South Africa","DHS","Africa",3634,0.449,11.7,5.6,66.4,50
+"Maldives","DHS","Asia",3250,0.453,9.7,4.7,40.1,27.3
+"Peru","DHS","Latin America",1436,0.471,20.9,7.5,62.6,84.3
+"Brazil","DHS","Latin America",543,0.479,16.3,9,63.4,64.5
+"Colombia","DHS","Latin America",24970,0.48,14.4,6.6,53.5,52.3
+"Philippines","DHS","Asia",3945,0.481,13.1,9.2,60.7,64.4
+"Turkey","DHS","Asia",1197,0.487,2.6,5.9,0,41.4
+"Dominican Republic","DHS","Latin America",4936,0.498,10.7,4.8,37,39.5
+"Honduras","DHS","Latin America",9031,0.501,8.6,4.6,50.1,60.8
+"Rwanda","DHS","Africa",4139,0.507,2.7,2.7,50.8,51.7
+"Namibia","DHS","Africa",4464,0.521,10.7,5.7,78.7,61.9
+"Guyana","DHS","Latin America",3143,0.528,13.6,7.6,48.3,47.3
+"Indonesia","DHS","Asia",22578,0.535,3.3,5.6,0,39.5
+"Bolivia","DHS","Latin America",6584,0.537,6.8,4.5,68.5,58.3
+"Nicaragua","DHS","Latin America",1259,0.545,4.5,4.8,51,55.3
+"Cambodia","DHS","Asia",7351,0.556,4.1,7.5,29.8,62.6
+"Guatemala","DHS","Latin America",11084,0.567,7.3,5.9,64.4,71.2
+"Lesotho","DHS","Africa",2627,0.572,13.9,4.6,67.4,27.5
+"Sao Tome and Principe","DHS","Africa",1336,0.574,7.6,0.7,52.6,0
+"Burundi","DHS","Africa",5897,0.578,2.3,3.4,57.6,60.8
+"Mozambique","DHS","Africa",4939,0.58,2.9,4.1,22.2,12.8
+"Ghana","DHS","Africa",4732,0.588,6.4,3.7,56.7,23
+"Nepal","DHS","Asia",4776,0.59,1.8,2.9,19.7,36.4
+"Swaziland","DHS","Africa",1881,0.591,7.6,4.4,64.7,29.5
+"Gabon","DHS","Africa",4560,0.6,6.9,4.4,40.1,27.2
+"Uganda","DHS","Africa",5518,0.6,2.4,2,49.4,29.8
+"Zimbabwe","DHS","Africa",5055,0.609,4.1,3.4,39.1,45.1
+"Tanzania","DHS","Africa",4615,0.61,3.5,2.4,54.6,22.6
+"Angola","DHS","Africa",4829,0.611,2.2,2.7,49.6,35.3
+"Zambia","DHS","Africa",5756,0.617,2.7,2,66.6,41.5
+"Congo","DHS","Africa",5186,0.618,4.3,2.4,52.2,21.2
+"Madagascar","DHS","Africa",7291,0.62,4.9,4.4,33,22.9
+"India","DHS","Asia",255796,0.623,8.1,3.7,28.4,25.5
+"Senegal","DHS","Africa",2675,0.623,8.6,6.8,59.7,42.7
+"Malawi","DHS","Africa",7773,0.639,2.7,1.1,61.3,9.2
+"Kenya","DHS","Africa",13546,0.643,4.3,2.7,58.8,55.1
+"Togo","DHS","Africa",4588,0.644,5,2.9,51.8,29.4
+"Benin","DHS","Africa",5147,0.646,2.2,1.3,39.5,19.9
+"Burkina Faso","DHS","Africa",7212,0.646,3.3,0.9,43,22.7
+"Cameroon","DHS","Africa",4784,0.66,3.4,3.3,55.5,17.9
+"Mali","DHS","Africa",3385,0.668,1.7,2.3,32.5,8.3
+"Ivory Coast","DHS","Africa",4281,0.669,5.2,3.4,55.7,29.9
+"Liberia","DHS","Africa",2907,0.671,1.5,1.1,47.8,38.5
+"Sierra Leone","DHS","Africa",4949,0.674,1.4,1.7,65,13.4
+"Guinea","DHS","Africa",3508,0.678,3.4,4.7,40.1,14.8
+"Mauritania","DHS","Africa",1509,0.701,15.3,8,68.8,43.7
+"Gambia","DHS","Africa",2875,0.706,4.6,2.8,54.7,8.9
+"Niger","DHS","Africa",4669,0.743,3,1.8,34.2,26.2
