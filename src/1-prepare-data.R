@@ -8,16 +8,18 @@
 
 source("src/0-prepare-session.R")
 
-# Variables for external data paths (Adjust these paths for local reproduction)
-path_ess3 <- "../../../Library/CloudStorage/GoogleDrive-ryohei.mogi@upf.edu/My Drive/BigData/ESS/ESS3e03_7.sav"
-path_ess9 <- "../../../Library/CloudStorage/GoogleDrive-ryohei.mogi@upf.edu/My Drive/BigData/ESS/ESS9e03_2.sav"
-path_hh0 <- "../../../Library/CloudStorage/GoogleDrive-ryohei.mogi@upf.edu/My Drive/BigData/GGS_Harmonized/HH/HARMONIZED-HISTORIES_ALL_GGSaccess.dta"
-path_hh1 <- "../../../Library/CloudStorage/GoogleDrive-ryohei.mogi@upf.edu/My Drive/BigData/GGS_Harmonized/HH1/HARMONIZED-HISTORIES_I.dta"
-path_hh2 <- "../../../Library/CloudStorage/GoogleDrive-ryohei.mogi@upf.edu/My Drive/BigData/GGS_Harmonized/HH2/HarmonizedHistoriesII_2023_07_10.dta"
-path_dhs <- "../../../Dropbox/Proj_Partnership/Research_UCP/Analysis/data/DHS/ucp_red_edu.dta"
-path_un <- "dat/un_data_90001020.dta"
+# # NOTE: for full reproducibility get access to the raw data (ESS, GGS, and DHS) and place the needed data files in the project sub-directory, adapt the paths below as needed. See README.md for more details on data needed for full replication and instructions on obtaining access to these datasets.
 
-aggregate_file <- "out/d_all_minage35_edu2_.csv"
+# # Variables for external data paths
+# path_ess3 <- "data-raw/ESS/ESS3e03_7.sav"
+# path_ess9 <- "data-raw/ESS/ESS9e03_2.sav"
+# path_hh0 <- "data-raw/GGS_Harmonized/HH/HARMONIZED-HISTORIES_ALL_GGSaccess.dta"
+# path_hh1 <- "data-raw/GGS_Harmonized/HH1/HARMONIZED-HISTORIES_I.dta"
+# path_hh2 <- "data-raw/GGS_Harmonized/HH2/HarmonizedHistoriesII_2023_07_10.dta"
+# path_dhs <- "data-raw/DHS/ucp_red_edu.dta"
+
+path_un <- "dat/un_data_90001020.dta"
+aggregate_path <- "out/aggregate_dataset.csv"
 
 # -------------------------------------------------------------------------
 # 1. Helper Function for Aggregation (formerly 01_function_clean.R)
@@ -67,7 +69,7 @@ func_makedata2 <- function(oridata, minage) {
 # -------------------------------------------------------------------------
 # Bypass slow reading and processing if aggregate already exists.
 # Delete the aggregate file if you wish to re-pull from source raw data.
-if (!file.exists(aggregate_file)) {
+if (!file.exists(aggregate_path)) {
   message("Aggregate file not found. Rebuilding from raw source data...")
 
   # --- 2a. ESS ---
@@ -396,16 +398,16 @@ if (!file.exists(aggregate_file)) {
   if (!dir.exists("out")) {
     dir.create("out")
   }
-  write_csv(d_aggregate, aggregate_file)
+  write_csv(d_aggregate, aggregate_path)
   message("Data aggregated successfully.")
 } else {
   message("Found existing aggregate file. Skipping deep raw reprocessing.")
 }
 
 # -------------------------------------------------------------------------
-# 3. Final Preparation for Models & Visualizations
+# 3. Final Preparation for Models & Visualizations ----
 # -------------------------------------------------------------------------
-raw_agg <- read_csv(aggregate_file, show_col_types = FALSE) |>
+raw_agg <- read_csv(aggregate_path, show_col_types = FALSE) |>
   janitor::clean_names() |>
   mutate(
     country = country |>
