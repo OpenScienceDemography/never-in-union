@@ -15,80 +15,8 @@ load("out/never_edu2.rda")
 load("out/geodata.rda")
 
 
-never %>%
-  ggplot(aes(p_childless, p_niu, color = sex)) +
-  geom_point()
+# figure 1 ----------------------------------------------------------------
 
-
-# never %>%
-#   ggplot(aes(prop_childless, country))+
-#   geom_point(size = 4, color = "#004444")+ # this one is needed to set the coordinate space
-#   geom_hline(yintercept = seq(1, 80, 2), size = 4, color = "#ccffff")+
-#   geom_vline(xintercept = 0, size = 2, color = "#004444AA")+
-#   geom_text(
-#     data = . %>% filter(sex == "Women"),
-#     x = .36, aes(label = country %>% tolower),
-#     size = 3.5, hjust = 1, family = "ah", fontface = 2,
-#     color = "#004444AA"
-#   )+
-#   geom_point(size = 4, color = "#004444")+
-#   geom_flag(
-#     # data = . %>% filter(sex == "Men"),
-#     x = -.01, aes(country = iso2 %>% tolower), size = 4
-#   ) +
-#   geom_moon(aes(ratio = prop_neverinunion, fill = sex, right = FALSE), size = 4, color = NA)+
-#   facet_wrap(~ sex, nrow = 1)+
-#   scale_fill_manual(values = c("#dfff00", "#00FFFF"))+
-#   scale_x_continuous(position = "top")+
-#   theme(
-#     legend.position = "none",
-#     panel.grid.major.y = element_blank(),
-#     axis.text.y = element_blank(),
-#     strip.text = element_blank(),
-#     axis.text = element_text(face = 2),
-#     axis.title = element_text(face = 2)
-#   )+
-#   labs(
-#     x = "Proportion of childlesness",
-#     y = NULL
-#   )+
-#   geom_text(
-#     data = tibble(sex = c("Men", "Women"), sign = c("♂", "♀")),
-#     aes(label = sign),
-#     x = .005, y = 77,
-#     size = 20, hjust = 0, colour = c("#687807FF", "#017979FF"),
-#     family = "Roboto", fontface = 2
-#   )
-
-# ggsave("out/fig.pdf", width = 10, height = 10)
-
-# UPD  2023-03-20 ------------------------------
-# Remove flags, colorcode countries, add legend
-
-# first 4 colors are taken from gapminder.org
-# two more colors are produced with  "#ff5872" %>% clr_rotate(), 33 and 250 degrees
-gap_colors <- c(
-  "#00d5e9",
-  "#ff5872",
-  "#7feb02",
-  "#E37900FF",
-  "#C7B40BFF",
-  "#3B90FFFF"
-)
-
-# # a separate dataset for sex comparisons
-# other_sex <- never %>%
-#   transmute(
-#     country,
-#     sex = sex %>%
-#       str_replace("Men", "f") %>%
-#       str_replace("Women", "Men") %>%
-#       str_replace("f", "Women"),
-#     prop_childless_other_rex = prop_childless
-#   ) %>%
-#   left_join(
-#     never %>% select(country, sex, prop_childless)
-#   )
 
 never %>%
   ggplot(aes(p_childless, country)) +
@@ -107,34 +35,8 @@ never %>%
     # color = "#004444AA"
   ) +
   scale_fill_manual(values = c("#1B5E20", "#4FC3F7")) +
-  scale_color_manual(values = gap_colors) +
+  scale_color_manual(values = col5) +
   scale_x_continuous(position = "top", limits = c(0, 41), expand = c(0, 0)) +
-  # the segment for sex differences
-  # geom_segment(
-  #   data = other_sex,
-  #   aes(x = prop_childless_other_rex, xend = prop_childless, yend = country),
-  #   size = .5, color = "#004444AA"
-  # )+
-  # geom_point(
-  #   data = other_sex,
-  #   aes(x = prop_childless_other_rex),
-  #   size = 1, color = "#004444AA", fill = "#4DB6AC", shape = 21
-  # )+
-  # # correct sex values
-  # geom_point(
-  #   size = 3/4, color = "#004444"
-  # )+
-  # geom_point(
-  #   aes(alpha = prop_neverinunion == 0),
-  #   size = 4, color = "#004444"
-  # )+
-  # scale_alpha_manual(values = c(1, .5))+
-  # # geom_flag(
-  # #   # data = . %>% filter(sex == "Men"),
-  # #   x = -.01, aes(country = iso2 %>% tolower), size = 4
-  # # ) +
-  # geom_moon(aes(ratio = prop_neverinunion, fill = sex, right = FALSE), size = 4, color = NA)+
-  # facet_wrap(~ sex, nrow = 1)+
   theme(
     plot.title = element_text(size = 24, face = 2, hjust = .5, family = "ah"),
     legend.position = "none",
@@ -171,8 +73,8 @@ main <- last_plot()
 world_outline_robinson %>%
   ggplot() +
   geom_sf(aes(fill = continent), color = NA) +
-  geom_sf(data = country_borders, color = "#ccffff", linewidth = .1) +
-  scale_fill_manual(values = gap_colors, na.value = "#00444499") +
+  geom_sf(data = country_borders, color = "#ffffff", linewidth = .1) +
+  scale_fill_manual(values = col5, na.value = "#dddddd") +
   theme_void() +
   theme(legend.position = "none")
 
@@ -196,11 +98,11 @@ fig2main <- never %>%
   geom_smooth(
     method = "gam",
     se = FALSE,
-    color = "#269292",
+    color = "#262626",
     alpha = .5,
     size = 1.5
   ) +
-  scale_colour_manual(values = gap_colors) +
+  scale_colour_manual(values = col5) +
   scale_x_continuous(limits = c(0, 0.8)) +
   # xlim(0, 0.8) +
   labs(
@@ -244,11 +146,11 @@ fig3main <- never_edu2 %>%
   geom_smooth(
     method = "gam",
     se = FALSE,
-    color = "#269292",
+    color = "#262626",
     alpha = .5,
     size = 1.5
   ) +
-  scale_colour_manual(values = gap_colors) +
+  scale_colour_manual(values = col5) +
   scale_x_continuous(limits = c(0, 0.8)) +
   coord_cartesian(expand = FALSE) +
   # xlim(0, 0.8) +

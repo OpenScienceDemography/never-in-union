@@ -22,7 +22,7 @@ path_un <- "dat/un_data_90001020.dta"
 aggregate_path <- "out/aggregate_dataset.csv"
 
 # -------------------------------------------------------------------------
-# 1. Helper Function for Aggregation (formerly 01_function_clean.R)
+# 1. Helper Function for Aggregation (formerly 01_function_clean.R) ----
 # -------------------------------------------------------------------------
 func_makedata2 <- function(oridata, minage) {
   d_total <- oridata |>
@@ -65,7 +65,7 @@ func_makedata2 <- function(oridata, minage) {
 }
 
 # -------------------------------------------------------------------------
-# 2. Ingest, Clean, and Aggregate Data
+# 2. Ingest, Clean, and Aggregate Data ----
 # -------------------------------------------------------------------------
 # Bypass slow reading and processing if aggregate already exists.
 # Delete the aggregate file if you wish to re-pull from source raw data.
@@ -405,7 +405,7 @@ if (!file.exists(aggregate_path)) {
 }
 
 # -------------------------------------------------------------------------
-# 3. Final Preparation for Models & Visualizations ----
+# 3. Final Preparation for Models & Visualizations -----
 # -------------------------------------------------------------------------
 raw_agg <- read_csv(aggregate_path, show_col_types = FALSE) |>
   janitor::clean_names() |>
@@ -457,6 +457,11 @@ gap <- gapminder::gapminder_unfiltered |>
     continent = case_when(
       continent == "Europe" ~ "Europe & North America",
       continent == "Americas" ~ "Latin America",
+      TRUE ~ continent
+    )
+  ) |>
+  mutate(
+    continent = case_when(
       iso3 %in% c("AZE", "MDA") ~ "FSU",
       iso3 %in% c("CAN", "USA") ~ "Europe & North America",
       TRUE ~ continent

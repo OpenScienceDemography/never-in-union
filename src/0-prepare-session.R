@@ -38,13 +38,11 @@ theme_set(cowplot::theme_minimal_grid(font_family = "Roboto Condensed"))
 
 # custom operators (from old 00_setting.R)
 `%out%` = Negate(`%in%`)
-col7 <- c(
-  "#332288",
-  "#88CCEE",
-  "#117733",
-  "#999933",
-  "#FD8D3C",
-  "#882255",
-  "#DDDDDD"
+
+col5 <- c(
+  "#ee8833",
+  "#BF360C",
+  "#7c9e0b",
+  "#AB47BC",
+  "#BCAAA4"
 )
-Mycol <- c("#08306B", "#238B45", "#FD8D3C", "#D4B9DA", "#FFEDA0")
