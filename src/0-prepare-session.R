@@ -7,11 +7,7 @@
 #===============================================================================
 
 library(tidyverse)
-# no magrittr needed
 library(readxl)
-library(patchwork)
-library(paletteer)
-library(hrbrthemes)
 library(sf)
 library(janitor)
 library(countrycode)
@@ -22,15 +18,14 @@ library(showtext)
 sysfonts::font_add_google("Roboto Condensed", "rc")
 sysfonts::font_add_google("Atkinson Hyperlegible", "ah")
 showtext_auto()
-# showtext_auto()
-# library(ggdark)
+
+library(patchwork)
+library(paletteer)
+library(hrbrthemes)
 library(cowplot)
 library(ggforce)
 library(prismatic)
 library(gggibbous)
-
-# remotes::install_github("jimjam-slam/ggflags")
-library(ggflags)
 
 # set ggplot2 theme
 devtools::source_gist("653e1040a07364ae82b1bb312501a184")
