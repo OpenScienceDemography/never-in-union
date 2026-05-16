@@ -8,16 +8,18 @@
 
 source("src/0-prepare-session.R")
 
-# Variables for external data paths (Adjust these paths for local reproduction)
-path_ess3 <- "../../../Library/CloudStorage/GoogleDrive-ryohei.mogi@upf.edu/My Drive/BigData/ESS/ESS3e03_7.sav"
-path_ess9 <- "../../../Library/CloudStorage/GoogleDrive-ryohei.mogi@upf.edu/My Drive/BigData/ESS/ESS9e03_2.sav"
-path_hh0 <- "../../../Library/CloudStorage/GoogleDrive-ryohei.mogi@upf.edu/My Drive/BigData/GGS_Harmonized/HH/HARMONIZED-HISTORIES_ALL_GGSaccess.dta"
-path_hh1 <- "../../../Library/CloudStorage/GoogleDrive-ryohei.mogi@upf.edu/My Drive/BigData/GGS_Harmonized/HH1/HARMONIZED-HISTORIES_I.dta"
-path_hh2 <- "../../../Library/CloudStorage/GoogleDrive-ryohei.mogi@upf.edu/My Drive/BigData/GGS_Harmonized/HH2/HarmonizedHistoriesII_2023_07_10.dta"
-path_dhs <- "../../../Dropbox/Proj_Partnership/Research_UCP/Analysis/data/DHS/ucp_red_edu.dta"
+# # Variables for external data paths (Adjust these paths for local reproduction)
+# path_ess3 <- "../../../Library/CloudStorage/GoogleDrive-ryohei.mogi@upf.edu/My Drive/BigData/ESS/ESS3e03_7.sav"
+# path_ess9 <- "../../../Library/CloudStorage/GoogleDrive-ryohei.mogi@upf.edu/My Drive/BigData/ESS/ESS9e03_2.sav"
+# path_hh0 <- "../../../Library/CloudStorage/GoogleDrive-ryohei.mogi@upf.edu/My Drive/BigData/GGS_Harmonized/HH/HARMONIZED-HISTORIES_ALL_GGSaccess.dta"
+# path_hh1 <- "../../../Library/CloudStorage/GoogleDrive-ryohei.mogi@upf.edu/My Drive/BigData/GGS_Harmonized/HH1/HARMONIZED-HISTORIES_I.dta"
+# path_hh2 <- "../../../Library/CloudStorage/GoogleDrive-ryohei.mogi@upf.edu/My Drive/BigData/GGS_Harmonized/HH2/HarmonizedHistoriesII_2023_07_10.dta"
+# path_dhs <- "../../../Dropbox/Proj_Partnership/Research_UCP/Analysis/data/DHS/ucp_red_edu.dta"
+# path_un <- "dat/un_data_90001020.dta"
+
+aggregate_file <- "out/aggregate_file.csv"
 path_un <- "dat/un_data_90001020.dta"
 
-aggregate_file <- "out/try.csv"
 
 # -------------------------------------------------------------------------
 # 1. Helper Function for Aggregation (formerly 01_function_clean.R)
@@ -67,11 +69,21 @@ func_makedata2 <- function(oridata, minage) {
 # -------------------------------------------------------------------------
 # Bypass slow reading and processing if aggregate already exists.
 # Delete the aggregate file if you wish to re-pull from source raw data.
+if (file.exists("dat/all_1950607080.dta")) {
+  message("Using pre-aggregated DTA file...")
+  aggregate_file <- "dat/all_1950607080.dta"
+}
+
 if (!file.exists(aggregate_file)) {
   message("Aggregate file not found. Rebuilding from raw source data...")
 
   # --- 2a. ESS ---
   message("Processing ESS data...")
+  if (!file.exists(path_ess3)) {
+    stop(
+      "Raw ESS data not found. Please ensure 'dat/all_1950607080.dta' exists or provide raw ESS files."
+    )
+  }
   ess3 <- foreign::read.spss(
     path_ess3,
     to.data.frame = TRUE,
@@ -405,16 +417,26 @@ if (!file.exists(aggregate_file)) {
 # -------------------------------------------------------------------------
 # 3. Final Preparation for Models & Visualizations
 # -------------------------------------------------------------------------
-raw_agg <- read_csv(aggregate_file, show_col_types = FALSE) |>
+if (grepl("\\.dta$", aggregate_file)) {
+  raw_agg <- readstata13::read.dta13(aggregate_file)
+} else {
+  raw_agg <- read_csv(aggregate_file, show_col_types = FALSE)
+}
+
+raw_agg <- raw_agg |>
   janitor::clean_names() |>
   mutate(
-    country = country |>
-      str_replace_all("The US", "United States") |>
-      str_replace_all("The UK", "United Kingdom"),
+    # Keep country names exactly as they appear in dat/table-1-regions.csv
+    # ("The UK", "The US", "Republic of Moldova", etc.) so the region join works.
     iso3 = countrycode::countrycode(
       country,
       origin = "country.name",
-      destination = "iso3c"
+      destination = "iso3c",
+      custom_match = c(
+        "The UK" = "GBR",
+        "The US" = "USA",
+        "Republic of Moldova" = "MDA"
+      )
     )
   )
 
@@ -432,36 +454,44 @@ d_un <- un |>
     )
   )
 
-# Gapminder regions
-gap <- gapminder::gapminder_unfiltered |>
-  janitor::clean_names() |>
-  distinct(country, continent) |>
-  transmute(
+# Country-to-region lookup — authoritative classification from Table 1.
+# dat/table-1-regions.csv is the single source of truth; gapminder is not used.
+gap <- read_csv(
+  "dat/table-1-regions.csv",
+  show_col_types = FALSE
+) |>
+  rename(continent = region) |>
+  mutate(
     iso3 = countrycode::countrycode(
       country,
       origin = "country.name",
-      destination = "iso3c"
-    ),
-    continent = as.character(continent)
-  ) |>
-  drop_na() |>
-  add_row(iso3 = "KGZ", continent = "FSU") |>
-  mutate(
-    name = countrycode::countrycode(
-      iso3,
-      origin = "iso3c",
-      destination = "country.name.en"
-    ),
-    continent = case_when(
-      continent == "Europe" ~ "Europe & North America",
-      continent == "Americas" ~ "Latin America",
-      iso3 %in% c("AZE", "MDA") ~ "FSU",
-      iso3 %in% c("CAN", "USA") ~ "Europe & North America",
-      TRUE ~ continent
+      destination = "iso3c",
+      custom_match = c(
+        "The UK" = "GBR",
+        "The US" = "USA",
+        "Republic of Moldova" = "MDA"
+      )
     )
-  )
+  ) |>
+  drop_na(iso3)
 
 # Primary outcome format
+if (!"edu2" %in% names(raw_agg) && "totaln" %in% names(raw_agg)) {
+  # Handle pre-aggregated DTA format
+  raw_agg <- raw_agg |>
+    rename(
+      total_n = totaln,
+      childless_n = childlessn,
+      never_in_union_n = neverinunionn
+    ) |>
+    mutate(edu2 = "All")
+}
+
+# The pre-aggregated DTA might already have country-level summary but let's re-join metadata.
+# We need to ensure 'country' is preserved for later factor operations.
+# Actually raw_agg has 'country'. Let's check why it gets lost.
+# summarise() drops columns not in group_by or summarise.
+
 never <- raw_agg |>
   drop_na(sex) |>
   replace_na(list(total_n = 0, childless_n = 0, never_in_union_n = 0)) |>
@@ -472,6 +502,8 @@ never <- raw_agg |>
   ) |>
   group_by(iso3, sex, edu2) |>
   summarise(
+    # Keep country name if available (picking the first one in the group)
+    country = first(country),
     n_total = sum(total_n, na.rm = TRUE),
     n_childless = sum(childless_n, na.rm = TRUE),
     n_niu = sum(never_in_union_n, na.rm = TRUE),
@@ -509,6 +541,7 @@ never_edu2 <- raw_agg |>
   ) |>
   group_by(iso3, sex, edu2) |>
   summarise(
+    country = first(country),
     n_total = sum(total_n, na.rm = TRUE),
     n_childless = sum(childless_n, na.rm = TRUE),
     n_niu = sum(never_in_union_n, na.rm = TRUE),
