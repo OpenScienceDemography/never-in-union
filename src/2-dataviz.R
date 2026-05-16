@@ -19,6 +19,7 @@ load("out/geodata.rda")
 
 
 never %>%
+  drop_na(continent) |> 
   ggplot(aes(p_childless, country)) +
   geom_hline(yintercept = seq(1, 90, 2), size = 4, color = "#fafafa") +
   geom_vline(xintercept = 0, size = 2, color = "#004444AA") +
