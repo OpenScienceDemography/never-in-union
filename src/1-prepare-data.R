@@ -494,10 +494,13 @@ never <- raw_agg |>
   ) |>
   left_join(d_un, by = "iso3") |>
   filter(!is.na(gii)) |>
-  group_by(continent) |>
-  mutate(cont_gii = mean(gii, na.rm = TRUE)) |>
-  ungroup() |>
-  arrange(cont_gii, gii) |>
+  # group_by(continent) |>
+  # mutate(cont_gii = mean(gii, na.rm = TRUE)) |>
+  # ungroup() |>
+  arrange(
+    # cont_gii, 
+    gii
+  ) |>
   mutate(
     country = fct_rev(fct_inorder(as_factor(country))),
     continent = fct_rev(fct_inorder(as_factor(continent)))

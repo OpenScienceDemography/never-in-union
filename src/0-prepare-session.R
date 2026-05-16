@@ -35,9 +35,9 @@ theme_set(cowplot::theme_minimal_grid(font_family = "Roboto Condensed"))
 `%out%` = Negate(`%in%`)
 
 col5 <- c(
-  "#ee8833",
-  "#BF360C",
-  "#7c9e0b",
-  "#AB47BC",
-  "#BCAAA4"
+  "#7c9e0b", # LatAm
+  "#BF360C", # Asia
+  "#ee8833", # Africa
+  "#AB47BC", # FSU
+  "#BCAAA4" # Europe
 )

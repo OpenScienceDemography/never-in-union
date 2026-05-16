@@ -20,9 +20,13 @@ load("out/geodata.rda")
 
 never %>%
   ggplot(aes(p_childless, country)) +
-  geom_hline(yintercept = seq(1, 90, 2), size = 4, color = "#eaeaea") +
+  geom_hline(yintercept = seq(1, 90, 2), size = 4, color = "#fafafa") +
   geom_vline(xintercept = 0, size = 2, color = "#004444AA") +
-  geom_line(aes(group = country, color = continent), size = 1, alpha = 3 / 4) +
+  geom_line(
+    # aes(group = country, color = continent), 
+    color = "#929292",
+    size = 1, alpha = 3 / 4
+  ) +
   geom_point(size = 3, aes(fill = sex), shape = 21, stroke = NA) +
   geom_text(
     data = . %>% filter(sex == "Women"),
@@ -41,6 +45,9 @@ never %>%
     plot.title = element_text(size = 24, face = 2, hjust = .5, family = "ah"),
     legend.position = "none",
     panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.x = element_line(color = "#fafafa"),
     axis.text.y = element_blank(),
     strip.text = element_blank(),
     axis.text = element_text(face = 2),
