@@ -509,7 +509,11 @@ if (!"edu2" %in% names(raw_agg) && "totaln" %in% names(raw_agg)) {
 
 never <- raw_agg |>
   drop_na(sex) |>
-  replace_na(list(total_n = 0, childless_n = 0, never_in_union_n = 0)) |>
+  replace_na(list(
+    total_n = 0,
+    childless_n = 0,
+    never_in_union_n = 0
+  )) |>
   filter(
     bc_cate %in% c("1960-1969", "1970-1979"),
     edu2 == "All",
