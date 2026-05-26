@@ -17,16 +17,16 @@ load("out/geodata.rda")
 
 # figure 1 ----------------------------------------------------------------
 
-
-never %>%
-  drop_na(continent) |> 
+main <- never %>%
+  drop_na(continent) |>
   ggplot(aes(p_childless, country)) +
   geom_hline(yintercept = seq(1, 90, 2), size = 4, color = "#fafafa") +
   geom_vline(xintercept = 0, size = 2, color = "#004444AA") +
   geom_line(
-    # aes(group = country, color = continent), 
+    # aes(group = country, color = continent),
     color = "#929292",
-    size = 1, alpha = 3 / 4
+    linewidth = 1,
+    alpha = 3 / 4
   ) +
   geom_point(size = 3, aes(fill = sex), shape = 21, stroke = NA) +
   geom_text(
@@ -75,10 +75,9 @@ never %>%
     fontface = 2
   )
 
-main <- last_plot()
 
 # inset map of world regions
-world_outline_robinson %>%
+inset <- world_outline_robinson %>%
   ggplot() +
   geom_sf(aes(fill = continent), color = NA) +
   geom_sf(data = country_borders, color = "#ffffff", linewidth = .1) +
@@ -86,19 +85,18 @@ world_outline_robinson %>%
   theme_void() +
   theme(legend.position = "none")
 
-inset <- last_plot()
-
 
 # assemble
 (out <- ggdraw(main) +
   draw_plot(inset, x = .3, width = .6, y = .05, height = .25))
 
-ggsave("out/fig.pdf", plot = out, width = 9, height = 12)
+ggsave("out/fig1-p-childless.pdf", plot = out, width = 9, height = 12)
 
 # correlation plots -------------------------------------------------------
 
 # x: GII, y: % of never-in-union among childless population
 fig2main <- never %>%
+  drop_na(continent) |>
   filter(edu2 == "All") %>%
   ggplot(aes(x = gii, y = p_niu)) +
   facet_wrap(~sex) +
@@ -148,6 +146,7 @@ ggsave("out/fig2-p-niu.pdf", fig2, width = 9, height = 6.5)
 
 # x: GII, y: % of never-in-union among childless population
 fig3main <- never_edu2 %>%
+  drop_na(continent) |>
   ggplot(aes(x = gii, y = p_niu)) +
   facet_wrap(sex ~ edu2) +
   geom_point(aes(group = country, colour = continent)) +

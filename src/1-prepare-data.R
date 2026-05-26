@@ -17,12 +17,12 @@ source("src/0-prepare-session.R")
 # path_dhs <- "../../../Dropbox/Proj_Partnership/Research_UCP/Analysis/data/DHS/ucp_red_edu.dta"
 # path_un <- "dat/un_data_90001020.dta"
 
-aggregate_file <- "out/aggregate_file.csv"
+aggregate_file <- "dat/aggregate_file.csv"
 path_un <- "dat/un_data_90001020.dta"
 
 
 # -------------------------------------------------------------------------
-# 1. Helper Function for Aggregation (formerly 01_function_clean.R)
+# 1. Helper Function for Aggregation (formerly 01_function_clean.R) ----
 # -------------------------------------------------------------------------
 func_makedata2 <- function(oridata, minage) {
   d_total <- oridata |>
@@ -65,13 +65,13 @@ func_makedata2 <- function(oridata, minage) {
 }
 
 # -------------------------------------------------------------------------
-# 2. Ingest, Clean, and Aggregate Data
+# 2. Ingest, Clean, and Aggregate Data ----
 # -------------------------------------------------------------------------
 # Bypass slow reading and processing if aggregate already exists.
 # Delete the aggregate file if you wish to re-pull from source raw data.
-if (file.exists("dat/all_1950607080.dta")) {
+if (file.exists("dat/aggregate_file.csv")) {
   message("Using pre-aggregated DTA file...")
-  aggregate_file <- "dat/all_1950607080.dta"
+  aggregate_file <- "dat/aggregate_file.csv"
 }
 
 if (!file.exists(aggregate_file)) {
@@ -415,7 +415,7 @@ if (!file.exists(aggregate_file)) {
 }
 
 # -------------------------------------------------------------------------
-# 3. Final Preparation for Models & Visualizations
+# 3. Final Preparation for Models & Visualizations ----
 # -------------------------------------------------------------------------
 if (grepl("\\.dta$", aggregate_file)) {
   raw_agg <- readstata13::read.dta13(aggregate_file)
@@ -438,7 +438,8 @@ raw_agg <- raw_agg |>
         "Republic of Moldova" = "MDA"
       )
     )
-  )
+  ) |>
+  select(-country)
 
 # UN HDI / GII data
 un <- readstata13::read.dta13(path_un)
@@ -450,9 +451,15 @@ d_un <- un |>
     iso3 = countrycode::countrycode(
       country,
       origin = "country.name",
-      destination = "iso3c"
+      destination = "iso3c",
+      custom_match = c(
+        "The UK" = "GBR",
+        "The US" = "USA",
+        "Republic of Moldova" = "MDA"
+      )
     )
-  )
+  ) |>
+  select(-country)
 
 # Country-to-region lookup — authoritative classification from Table 1.
 # dat/table-1-regions.csv is the single source of truth; gapminder is not used.
@@ -473,7 +480,15 @@ gap <- read_csv(
       )
     )
   ) |>
-  drop_na(iso3)
+  drop_na(iso3) |>
+  # add proper country names
+  mutate(
+    country = countrycode::countrycode(
+      iso3,
+      origin = "iso3c",
+      destination = "country.name"
+    )
+  )
 
 # Primary outcome format
 if (!"edu2" %in% names(raw_agg) && "totaln" %in% names(raw_agg)) {
@@ -503,7 +518,6 @@ never <- raw_agg |>
   group_by(iso3, sex, edu2) |>
   summarise(
     # Keep country name if available (picking the first one in the group)
-    country = first(country),
     n_total = sum(total_n, na.rm = TRUE),
     n_childless = sum(childless_n, na.rm = TRUE),
     n_niu = sum(never_in_union_n, na.rm = TRUE),
@@ -541,7 +555,6 @@ never_edu2 <- raw_agg |>
   ) |>
   group_by(iso3, sex, edu2) |>
   summarise(
-    country = first(country),
     n_total = sum(total_n, na.rm = TRUE),
     n_childless = sum(childless_n, na.rm = TRUE),
     n_niu = sum(never_in_union_n, na.rm = TRUE),
