@@ -40,7 +40,7 @@ main <- never %>%
     # color = "#004444AA"
   ) +
   scale_fill_manual(values = c("#1B5E20", "#4FC3F7")) +
-  scale_color_manual(values = col5) +
+  scale_color_manual(values = col4) +
   scale_x_continuous(position = "top", limits = c(0, 41), expand = c(0, 0)) +
   theme(
     plot.title = element_text(size = 24, face = 2, hjust = .5, family = "ah"),
@@ -81,7 +81,7 @@ inset <- world_outline_robinson %>%
   ggplot() +
   geom_sf(aes(fill = continent), color = NA) +
   geom_sf(data = country_borders, color = "#ffffff", linewidth = .1) +
-  scale_fill_manual(values = col5, na.value = "#dddddd") +
+  scale_fill_manual(values = col4, na.value = "#dddddd") +
   theme_void() +
   theme(legend.position = "none")
 
@@ -108,7 +108,7 @@ fig2main <- never %>%
     alpha = .5,
     size = 1.5
   ) +
-  scale_colour_manual(values = col5) +
+  scale_colour_manual(values = col4) +
   scale_x_continuous(limits = c(0, 0.8)) +
   # xlim(0, 0.8) +
   labs(
@@ -157,7 +157,7 @@ fig3main <- never_edu2 %>%
     alpha = .5,
     size = 1.5
   ) +
-  scale_colour_manual(values = col5) +
+  scale_colour_manual(values = col4) +
   scale_x_continuous(limits = c(0, 0.8)) +
   coord_cartesian(expand = FALSE) +
   # xlim(0, 0.8) +

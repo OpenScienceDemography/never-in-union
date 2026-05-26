@@ -41,3 +41,10 @@ col5 <- c(
   "#AB47BC", # FSU
   "#BCAAA4" # Europe
 )
+
+col4 <- c(
+  "#662211", # africa
+  "#EC407A", # latam
+  "#bb2233", # asia
+  "#F48FB1" # europe
+)
