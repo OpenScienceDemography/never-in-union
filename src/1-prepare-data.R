@@ -1,10 +1,10 @@
-#===============================================================================
-# 2023-03-18 -- never-in-union (Refactored 2026-04-03)
-# prepare data
+# ..........................................................
+# 2023-03-18 -- never-in-union (Refactored 2026-06-05)
+# prepare data ---------
 # Ryo Mogi, rymo@sdu.dk
 # Ewa Batyra, ebatyra@ced.uab.es
 # Ilya Kashnitsky, ilya.kashnitsky@gmail.com
-#===============================================================================
+# ..........................................................
 
 source("src/0-prepare-session.R")
 
@@ -21,9 +21,9 @@ aggregate_file <- "dat/aggregate_file.csv"
 path_un <- "dat/un_data_90001020.dta"
 
 
-# -------------------------------------------------------------------------
-# 1. Helper Function for Aggregation (formerly 01_function_clean.R) ----
-# -------------------------------------------------------------------------
+
+# 1. Helper Function for Aggregation (formerly 01_function_clean.R) -----------------------------------
+
 func_makedata2 <- function(oridata, minage) {
   d_total <- oridata |>
     filter(age >= minage) |>
@@ -64,9 +64,9 @@ func_makedata2 <- function(oridata, minage) {
   d |> bind_rows(d_alledu)
 }
 
-# -------------------------------------------------------------------------
-# 2. Ingest, Clean, and Aggregate Data ----
-# -------------------------------------------------------------------------
+# 2. Ingest, Clean, and Aggregate Data ------------------
+
+
 # Bypass slow reading and processing if aggregate already exists.
 # Delete the aggregate file if you wish to re-pull from source raw data.
 if (file.exists("dat/aggregate_file.csv")) {
@@ -414,9 +414,9 @@ if (!file.exists(aggregate_file)) {
   message("Found existing aggregate file. Skipping deep raw reprocessing.")
 }
 
-# -------------------------------------------------------------------------
+
 # 3. Final Preparation for Models & Visualizations ----
-# -------------------------------------------------------------------------
+
 if (grepl("\\.dta$", aggregate_file)) {
   raw_agg <- readstata13::read.dta13(aggregate_file)
 } else {
@@ -516,8 +516,7 @@ never <- raw_agg |>
   )) |>
   filter(
     bc_cate %in% c("1960-1969", "1970-1979"),
-    edu2 == "All",
-    total_n >= 50
+    edu2 == "All"
   ) |>
   group_by(iso3, sex, edu2) |>
   summarise(
@@ -527,6 +526,10 @@ never <- raw_agg |>
     n_niu = sum(never_in_union_n, na.rm = TRUE),
     .groups = "drop"
   ) |>
+  # UPD 2026-06-05 -- filter after summary  !!!
+  filter(
+    n_total >= 50
+  ) |> 
   group_by(iso3) |>
   filter(n() == 2) |>
   ungroup() |>
@@ -554,8 +557,7 @@ never_edu2 <- raw_agg |>
   replace_na(list(total_n = 0, childless_n = 0, never_in_union_n = 0)) |>
   filter(
     bc_cate %in% c("1960-1969", "1970-1979"),
-    edu2 %in% c("Low", "High"),
-    total_n >= 30
+    edu2 %in% c("Low", "High")
   ) |>
   group_by(iso3, sex, edu2) |>
   summarise(
@@ -564,6 +566,10 @@ never_edu2 <- raw_agg |>
     n_niu = sum(never_in_union_n, na.rm = TRUE),
     .groups = "drop"
   ) |>
+  # UPD 2026-06-05 -- filter after summary  !!!
+  filter(
+    n_total >= 30
+  ) |> 
   group_by(iso3) |>
   filter(n() == 4) |>
   ungroup() |>

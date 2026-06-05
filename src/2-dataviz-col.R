@@ -1,5 +1,5 @@
 # ..........................................................
-# 2023-03-18 -- never-in-union (Refactored 2026-05-26)
+# 2023-03-18 -- never-in-union (Refactored 2026-06-05)
 # visualize ---------
 # Ryo Mogi, rymo@sdu.dk
 # Ewa Batyra, ebatyra@ced.uab.es
@@ -7,7 +7,7 @@
 # ..........................................................
 
 
-# prepare the session
+# prepare the session ----------------
 source("src/0-prepare-session.R")
 
 # load the prepared dataset
@@ -40,8 +40,8 @@ main <- never %>%
     fontface = 2,
     # color = "#004444AA"
   ) +
-  scale_fill_manual(values = c("#1B5E20", "#4FC3F7")) +
-  scale_color_manual(values = col4) +
+  scale_fill_manual(values = pal_sex) +
+  scale_color_manual(values = pal_four) +
   scale_x_continuous(position = "top", limits = c(0, 41), expand = c(0, 0)) +
   theme(
     plot.title = element_text(size = 24, face = 2, hjust = .5, family = "ah"),
@@ -71,7 +71,7 @@ main <- never %>%
     y = 85,
     size = 10,
     hjust = 0.5,
-    colour = c("#1B5E20", "#4FC3F7"),
+    colour = pal_sex,
     family = "Roboto",
     fontface = 2
   )
@@ -82,7 +82,7 @@ inset <- world_outline_robinson %>%
   ggplot() +
   geom_sf(aes(fill = continent), color = NA) +
   geom_sf(data = country_borders, color = "#ffffff", linewidth = .1) +
-  scale_fill_manual(values = col4, na.value = "#dddddd") +
+  scale_fill_manual(values = pal_four, na.value = "#dddddd") +
   theme_void() +
   theme(legend.position = "none")
 
@@ -91,7 +91,7 @@ inset <- world_outline_robinson %>%
 (out <- ggdraw(main) +
   draw_plot(inset, x = .3, width = .6, y = .05, height = .25))
 
-ggsave("out/fig1-p-childless.pdf", plot = out, width = 9, height = 12)
+ggsave("out/fig1-p-childless-col.pdf", plot = out, width = 9, height = 12)
 
 # correlation plots -------------------------------------------------------
 
@@ -109,7 +109,7 @@ fig2main <- never %>%
     alpha = .5,
     size = 1.5
   ) +
-  scale_colour_manual(values = col4) +
+  scale_colour_manual(values = pal_four) +
   scale_x_continuous(limits = c(0, 0.8)) +
   # xlim(0, 0.8) +
   labs(
@@ -134,7 +134,7 @@ fig2main <- never %>%
     y = 84,
     size = 10,
     hjust = 0.5,
-    colour = c("#1B5E20", "#4FC3F7"),
+    colour = pal_sex,
     family = "Roboto Condensed",
     fontface = 2
   )
@@ -143,7 +143,7 @@ fig2main <- never %>%
 (fig2 <- ggdraw(fig2main) +
   draw_plot(inset, x = .35, width = .4, y = .75, height = .2))
 
-ggsave("out/fig2-p-niu.pdf", fig2, width = 9, height = 6.5)
+ggsave("out/fig2-p-niu-col.pdf", fig2, width = 9, height = 6.5)
 
 # x: GII, y: % of never-in-union among childless population
 fig3main <- never_edu2 %>%
@@ -158,7 +158,7 @@ fig3main <- never_edu2 %>%
     alpha = .5,
     size = 1.5
   ) +
-  scale_colour_manual(values = col4) +
+  scale_colour_manual(values = pal_four) +
   scale_x_continuous(limits = c(0, 0.8)) +
   coord_cartesian(expand = FALSE) +
   # xlim(0, 0.8) +
@@ -186,7 +186,7 @@ fig3main <- never_edu2 %>%
     size = 10,
     hjust = 0,
     vjust = 1,
-    colour = c("#1B5E20", "#4FC3F7") |> rep(each = 2),
+    colour = pal_sex |> rep(each = 2),
     family = "Roboto Condensed",
     fontface = 2
   ) +
@@ -202,7 +202,7 @@ fig3main <- never_edu2 %>%
     size = 7,
     hjust = 1,
     vjust = 1,
-    colour = c("#1B5E20", "#4FC3F7") |> rep(each = 2),
+    colour = pal_sex |> rep(each = 2),
     family = "Roboto Condensed",
     fontface = 2,
     lineheight = .95
@@ -212,7 +212,7 @@ fig3main <- never_edu2 %>%
 (fig3 <- ggdraw(fig3main) +
   draw_plot(inset, x = .35, width = .4, y = .45, height = .25))
 
-ggsave("out/fig3-p-niu-edu.pdf", fig3, width = 9, height = 12)
+ggsave("out/fig3-p-niu-edu-col.pdf", fig3, width = 9, height = 12)
 
 
 # convert to PNG from the saved PDF  --------------------------------------
